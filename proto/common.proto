@@ -10,29 +10,12 @@ enum ChainRef {
     CHAIN_UNSPECIFIED = 0;
 
     CHAIN_BITCOIN = 1;
-    // CHAIN_GRIN = 2;
-
-    CHAIN_ETHEREUM = 100;
-    CHAIN_ETHEREUM_CLASSIC = 101;
-    CHAIN_FANTOM = 102; // Fantom, https://fantom.foundation/
-
-    // Sidechains and state channels start with 1_000
-    // CHAIN_LIGHTNING = 1001;
-    CHAIN_MATIC = 1002; // Matic PoS Ethereum sidechain based on Polygon
-    CHAIN_RSK = 1003; // RSK sidechain, https://www.rsk.co/
-
-    // Testnets start with 10_000
-    CHAIN_MORDEN = 10001;
-    CHAIN_KOVAN = 10002;
-    CHAIN_TESTNET_BITCOIN = 10003;
-    // CHAIN_FLOONET = 10004;
-    CHAIN_GOERLI = 10005;
-    CHAIN_ROPSTEN = 10006;
-    CHAIN_RINKEBY = 10007;
-    CHAIN_HOLESKY = 10008;
-    CHAIN_SEPOLIA = 10009;
-
-    // Non-standard starts from 20_000
+    CHAIN_ETHEREUM = 2;
+    CHAIN_SEPOLIA = 3;
+    CHAIN_POLYGON= 4;
+    CHAIN_AMOY= 5;
+    CHAIN_KATANA= 6;
+    CHAIN_BOKUTO= 7;
 }
 
 message SingleAddress {

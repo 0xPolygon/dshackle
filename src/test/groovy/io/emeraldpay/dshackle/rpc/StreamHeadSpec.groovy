@@ -47,7 +47,7 @@ class StreamHeadSpec extends Specification {
         def streamHead = new StreamHead(upstreams)
         when:
         def flux = streamHead.add(
-                Mono.just(Common.Chain.newBuilder().setType(Common.ChainRef.CHAIN_ETHEREUM_CLASSIC).build())
+                Mono.just(Common.Chain.newBuilder().setType(Common.ChainRef.CHAIN_SEPOLIA).build())
         )
         then:
         StepVerifier.create(flux)

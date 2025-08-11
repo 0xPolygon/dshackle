@@ -33,14 +33,8 @@ proxy:
       require: false
       ca: "/path/second/ca.dshackle.test.crt"
   routes:
-    - id: eth
+    - id: ethereum
       blockchain: ethereum
-    - id: etc
-      blockchain: ethereum_classic
-    - id: kovan
-      blockchain: kovan
-    - id: goerli
-      blockchain: goerli
     - id: sepolia
       blockchain: sepolia
 

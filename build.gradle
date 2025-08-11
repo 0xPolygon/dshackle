@@ -15,13 +15,11 @@ plugins {
     id("org.jetbrains.kotlin.jvm") version "$kotlinVersion"
     id("com.google.cloud.tools.jib") version "3.3.1"
     id("org.springframework.boot") version "$springBootVersion"
-    id("com.palantir.git-version") version "0.12.3"
     id("com.google.protobuf") version "0.8.17"
     id("org.jlleitschuh.gradle.ktlint") version "10.2.0"
     id("io.gitlab.arturbosch.detekt") version "$detektVersion"
     id("com.google.osdetector") version "1.7.0"
 }
-
 
 group = 'io.emeraldpay.dshackle'
 
@@ -252,15 +250,12 @@ task generateVersion() {
     description = 'Generate project version'
 
     doLast {
-        def version = versionDetails()
+        // def version = versionDetails()
         def resourcesDir = new File(project.buildDir.absolutePath + "/generated/version")
         resourcesDir.mkdirs()
         new File(resourcesDir, "version.properties").text = [
                 "# AUTOMATICALLY GENERATED",
                 "version.app=$project.version",
-                "version.commit=${version.gitHash}",
-                "version.tag=${version.lastTag}",
-                "version.date=${DateTimeFormatter.ISO_LOCAL_DATE_TIME.withZone(ZoneId.of('UTC')).format(Instant.now().truncatedTo(ChronoUnit.SECONDS))} UTC"
         ].join("\n")
     }
 }

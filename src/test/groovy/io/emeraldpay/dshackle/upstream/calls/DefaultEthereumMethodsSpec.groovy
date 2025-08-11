@@ -38,12 +38,6 @@ class DefaultEthereumMethodsSpec extends Specification {
         where:
         chain                  | id
         Chain.ETHEREUM         | '"0x1"'
-        Chain.ETHEREUM_CLASSIC | '"0x3d"'
-        Chain.TESTNET_KOVAN    | '"0x2a"'
-        Chain.TESTNET_GOERLI   | '"0x5"'
-        Chain.TESTNET_RINKEBY  | '"0x4"'
-        Chain.TESTNET_ROPSTEN  | '"0x3"'
-        Chain.TESTNET_SEPOLIA  | '"0xaa36a7"'
-        Chain.TESTNET_HOLESKY  | '"0x4268"'
+        Chain.SEPOLIA          | '"0xaa36a7"'
     }
 }

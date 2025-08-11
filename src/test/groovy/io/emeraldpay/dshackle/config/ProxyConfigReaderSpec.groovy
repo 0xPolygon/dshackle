@@ -66,8 +66,8 @@ class ProxyConfigReaderSpec extends Specification {
             blockchain == Chain.ETHEREUM
         }
         with(act.routes[1]) {
-            id == "classic"
-            blockchain == Chain.ETHEREUM_CLASSIC
+            id == "sepolia"
+            blockchain == Chain.SEPOLIA
         }
     }
 
@@ -90,8 +90,8 @@ class ProxyConfigReaderSpec extends Specification {
             blockchain == Chain.ETHEREUM
         }
         with(act.routes[1]) {
-            id == "classic"
-            blockchain == Chain.ETHEREUM_CLASSIC
+            id == "sepolia"
+            blockchain == Chain.SEPOLIA
         }
     }
 }

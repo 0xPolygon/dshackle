@@ -122,32 +122,17 @@ class DefaultEthereumMethods(
                     Chain.ETHEREUM == chain -> {
                         "\"1\""
                     }
-                    Chain.ETHEREUM_CLASSIC == chain -> {
-                        "\"1\""
+                    Chain.SEPOLIA == chain -> {
+                        "\"11155111\""
                     }
-                    Chain.MATIC == chain -> {
+                    Chain.POLYGON == chain -> {
                         "\"137\""
                     }
-                    Chain.TESTNET_MORDEN == chain -> {
-                        "\"2\""
+                    Chain.AMOY == chain -> {
+                        "\"80002\""
                     }
-                    Chain.TESTNET_ROPSTEN == chain -> {
-                        "\"3\""
-                    }
-                    Chain.TESTNET_RINKEBY == chain -> {
-                        "\"4\""
-                    }
-                    Chain.TESTNET_KOVAN == chain -> {
-                        "\"42\""
-                    }
-                    Chain.TESTNET_GOERLI == chain -> {
-                        "\"5\""
-                    }
-                    Chain.TESTNET_HOLESKY == chain -> {
-                        "\"17000\""
-                    }
-                    Chain.TESTNET_SEPOLIA == chain -> {
-                        "\"11155111\""
+                    Chain.KATANA == chain -> {
+                        "\"747474\""
                     }
                     else -> throw RpcException(-32602, "Invalid chain")
                 }
@@ -157,32 +142,17 @@ class DefaultEthereumMethods(
                     Chain.ETHEREUM == chain -> {
                         "\"0x1\""
                     }
-                    Chain.MATIC == chain -> {
+                    Chain.SEPOLIA == chain -> {
+                        "\"0xaa36a7\""
+                    }
+                    Chain.POLYGON == chain -> {
                         "\"0x89\""
                     }
-                    Chain.TESTNET_ROPSTEN == chain -> {
-                        "\"0x3\""
+                    Chain.AMOY == chain -> {
+                        "\"0x13882\""
                     }
-                    Chain.TESTNET_RINKEBY == chain -> {
-                        "\"0x4\""
-                    }
-                    Chain.ETHEREUM_CLASSIC == chain -> {
-                        "\"0x3d\""
-                    }
-                    Chain.TESTNET_MORDEN == chain -> {
-                        "\"0x3c\""
-                    }
-                    Chain.TESTNET_KOVAN == chain -> {
-                        "\"0x2a\""
-                    }
-                    Chain.TESTNET_GOERLI == chain -> {
-                        "\"0x5\""
-                    }
-                    Chain.TESTNET_HOLESKY == chain -> {
-                        "\"0x4268\""
-                    }
-                    Chain.TESTNET_SEPOLIA == chain -> {
-                        "\"0xaa36a7\""
+                    Chain.KATANA == chain -> {
+                        "\"0xb67d2\""
                     }
                     else -> throw RpcException(-32602, "Invalid chain")
                 }

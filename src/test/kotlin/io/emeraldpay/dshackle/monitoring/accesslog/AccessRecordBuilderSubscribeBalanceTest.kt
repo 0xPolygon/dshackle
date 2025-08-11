@@ -20,7 +20,7 @@ class AccessRecordBuilderSubscribeBalanceTest : ShouldSpec({
             )
             .setAsset(
                 Common.Asset.newBuilder()
-                    .setChainValue(100)
+                    .setChainValue(2)
                     .setCode("ETHER")
             )
             .build()
@@ -32,7 +32,7 @@ class AccessRecordBuilderSubscribeBalanceTest : ShouldSpec({
             )
             .setAsset(
                 Common.Asset.newBuilder()
-                    .setChainValue(100)
+                    .setChainValue(2)
                     .setCode("ETHER")
             )
             .setBalance("1234560000000000000")

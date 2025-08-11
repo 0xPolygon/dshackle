@@ -8,5 +8,5 @@ health:
     - blockchain: ethereum
       min-available: 2
     # use `chain` for backward compatibility
-    - chain: bitcoin
+    - chain: sepolia
       min-available: 1

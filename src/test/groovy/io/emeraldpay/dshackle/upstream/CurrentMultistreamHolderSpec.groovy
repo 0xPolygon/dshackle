@@ -39,34 +39,28 @@ class CurrentMultistreamHolderSpec extends Specification {
         setup:
         def current = new CurrentMultistreamHolder(TestingCommons.emptyCaches(), new NoSigner())
         def up1 = new EthereumUpstreamMock("test1", Chain.ETHEREUM, TestingCommons.standardApi())
-        def up2 = new EthereumUpstreamMock("test2", Chain.ETHEREUM_CLASSIC, TestingCommons.standardApi())
         def up3 = new EthereumUpstreamMock("test3", Chain.ETHEREUM, TestingCommons.standardApi())
         when:
         current.update(new UpstreamChange(Chain.ETHEREUM, up1, UpstreamChange.ChangeType.ADDED))
-        current.update(new UpstreamChange(Chain.ETHEREUM_CLASSIC, up2, UpstreamChange.ChangeType.ADDED))
         current.update(new UpstreamChange(Chain.ETHEREUM, up3, UpstreamChange.ChangeType.ADDED))
         then:
-        current.getAvailable().toSet() == [Chain.ETHEREUM, Chain.ETHEREUM_CLASSIC].toSet()
+        current.getAvailable().toSet() == [Chain.ETHEREUM].toSet()
         current.getUpstream(Chain.ETHEREUM).getAll().toSet() == [up1, up3].toSet()
-        current.getUpstream(Chain.ETHEREUM_CLASSIC).getAll().toSet() == [up2].toSet()
     }
 
     def "remove upstream"() {
         setup:
         def current = new CurrentMultistreamHolder(TestingCommons.emptyCaches(), new NoSigner())
         def up1 = new EthereumUpstreamMock("test1", Chain.ETHEREUM, TestingCommons.standardApi())
-        def up2 = new EthereumUpstreamMock("test2", Chain.ETHEREUM_CLASSIC, TestingCommons.standardApi())
         def up3 = new EthereumUpstreamMock("test3", Chain.ETHEREUM, TestingCommons.standardApi())
         def up1_del = new EthereumUpstreamMock("test1", Chain.ETHEREUM, TestingCommons.standardApi())
         when:
         current.update(new UpstreamChange(Chain.ETHEREUM, up1, UpstreamChange.ChangeType.ADDED))
-        current.update(new UpstreamChange(Chain.ETHEREUM_CLASSIC, up2, UpstreamChange.ChangeType.ADDED))
         current.update(new UpstreamChange(Chain.ETHEREUM, up3, UpstreamChange.ChangeType.ADDED))
         current.update(new UpstreamChange(Chain.ETHEREUM, up1_del, UpstreamChange.ChangeType.REMOVED))
         then:
-        current.getAvailable().toSet() == [Chain.ETHEREUM, Chain.ETHEREUM_CLASSIC].toSet()
+        current.getAvailable().toSet() == [Chain.ETHEREUM].toSet()
         current.getUpstream(Chain.ETHEREUM).getAll().toSet() == [up3].toSet()
-        current.getUpstream(Chain.ETHEREUM_CLASSIC).getAll().toSet() == [up2].toSet()
     }
 
     def "available after adding"() {
