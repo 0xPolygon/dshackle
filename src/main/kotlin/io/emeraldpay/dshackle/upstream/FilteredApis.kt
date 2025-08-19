@@ -23,7 +23,7 @@ import io.micrometer.core.instrument.DistributionSummary
 import io.micrometer.core.instrument.Metrics
 import io.micrometer.core.instrument.Tag
 import org.reactivestreams.Subscriber
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Sinks
 import java.time.Duration
@@ -50,7 +50,7 @@ class FilteredApis(
 ) : ApiSource {
 
     companion object {
-        private val log = LoggerFactory.getLogger(FilteredApis::class.java)
+        private val log = noCoLogger(FilteredApis::class)
 
         private const val DEFAULT_DELAY_STEP = 100
         private const val MAX_WAIT_MILLIS = 5000L

@@ -9,7 +9,7 @@ import io.emeraldpay.dshackle.upstream.rpcclient.JsonRpcError
 import io.emeraldpay.etherjar.rpc.RpcResponseError
 import org.jetbrains.annotations.NotNull
 import org.slf4j.Logger
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Mono
 
 import java.util.concurrent.Callable
@@ -17,7 +17,7 @@ import java.util.concurrent.atomic.AtomicInteger
 
 class DshackleApiReaderMock implements Reader<DshackleRequest, DshackleResponse> {
 
-    private static final Logger log = LoggerFactory.getLogger(this)
+    private static final Logger log = LoggerFactory.getnoCoLogger(this)
     List<PredefinedResponse> predefined = []
     private final ObjectMapper objectMapper = Global.objectMapper
 

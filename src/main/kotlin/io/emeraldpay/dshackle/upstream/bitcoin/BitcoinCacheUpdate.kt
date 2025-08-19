@@ -4,7 +4,7 @@ import io.emeraldpay.dshackle.cache.Caches
 import io.emeraldpay.dshackle.reader.StandardRpcReader
 import io.emeraldpay.dshackle.upstream.rpcclient.JsonRpcRequest
 import io.emeraldpay.dshackle.upstream.rpcclient.JsonRpcResponse
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Mono
 
 class BitcoinCacheUpdate(
@@ -13,7 +13,7 @@ class BitcoinCacheUpdate(
 ) : StandardRpcReader {
 
     companion object {
-        private val log = LoggerFactory.getLogger(BitcoinCacheUpdate::class.java)
+        private val log = noCoLogger(BitcoinCacheUpdate::class)
     }
 
     private val extractBlock = ExtractBlock()

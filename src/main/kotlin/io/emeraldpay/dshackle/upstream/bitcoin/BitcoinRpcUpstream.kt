@@ -27,7 +27,7 @@ import io.emeraldpay.dshackle.upstream.Upstream
 import io.emeraldpay.dshackle.upstream.UpstreamAvailability
 import io.emeraldpay.dshackle.upstream.bitcoin.subscribe.BitcoinRpcIngressSubscription
 import io.emeraldpay.dshackle.upstream.calls.CallMethods
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.context.Lifecycle
 import reactor.core.Disposable
 
@@ -46,7 +46,7 @@ open class BitcoinRpcUpstream(
 ) : BitcoinUpstream(id, chain, forkWatch, options, role, callMethods, node, esploraClient), Lifecycle {
 
     companion object {
-        private val log = LoggerFactory.getLogger(BitcoinRpcUpstream::class.java)
+        private val log = noCoLogger(BitcoinRpcUpstream::class)
     }
 
     private var validatorSubscription: Disposable? = null

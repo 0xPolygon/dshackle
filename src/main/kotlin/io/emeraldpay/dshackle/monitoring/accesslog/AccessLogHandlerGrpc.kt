@@ -23,7 +23,7 @@ import io.grpc.MethodDescriptor
 import io.grpc.ServerCall
 import io.grpc.ServerCallHandler
 import io.grpc.ServerInterceptor
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.util.UUID
@@ -34,7 +34,7 @@ class AccessLogHandlerGrpc(
 ) : ServerInterceptor {
 
     companion object {
-        private val log = LoggerFactory.getLogger(AccessLogHandlerGrpc::class.java)
+        private val log = noCoLogger(AccessLogHandlerGrpc::class)
     }
 
     override fun <ReqT : Any, RespT : Any> interceptCall(

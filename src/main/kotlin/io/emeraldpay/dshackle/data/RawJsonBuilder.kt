@@ -16,13 +16,13 @@
  */
 package io.emeraldpay.dshackle.data
 
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import java.io.ByteArrayOutputStream
 
 class RawJsonBuilder {
 
     companion object {
-        private val log = LoggerFactory.getLogger(RawJsonBuilder::class.java)
+        private val log = noCoLogger(RawJsonBuilder::class)
 
         private val START = "{\"jsonrpc\":\"2.0\"".toByteArray()
         private val ID_START = "\"id\":".toByteArray()

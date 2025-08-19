@@ -17,7 +17,7 @@
 package io.emeraldpay.dshackle.proxy
 
 import io.emeraldpay.api.proto.BlockchainOuterClass
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 
 /**
  * JSON RPC call to the proxy
@@ -30,7 +30,7 @@ class ProxyCall(
 ) {
 
     companion object {
-        private val log = LoggerFactory.getLogger(ProxyCall::class.java)
+        private val log = noCoLogger(ProxyCall::class)
     }
 
     /**

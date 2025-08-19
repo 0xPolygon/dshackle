@@ -28,7 +28,7 @@ import io.emeraldpay.etherjar.rpc.RpcException
 import io.emeraldpay.etherjar.rpc.RpcResponseError
 import io.grpc.StatusRuntimeException
 import org.apache.commons.lang3.time.StopWatch
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Mono
 import java.util.concurrent.TimeUnit
 import java.util.function.Function
@@ -41,7 +41,7 @@ class JsonRpcGrpcClient(
 ) {
 
     companion object {
-        private val log = LoggerFactory.getLogger(JsonRpcGrpcClient::class.java)
+        private val log = noCoLogger(JsonRpcGrpcClient::class)
     }
 
     fun forSelector(upstreamId: String, matcher: Selector.Matcher): StandardRpcReader {

@@ -18,7 +18,7 @@ package io.emeraldpay.dshackle.upstream.ethereum.subscribe
 import io.emeraldpay.dshackle.upstream.SubscriptionConnect
 import io.emeraldpay.dshackle.upstream.UpstreamAvailability
 import io.emeraldpay.dshackle.upstream.ethereum.EthereumMultistream
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Flux
 import java.time.Duration
 import java.util.concurrent.locks.ReentrantLock
@@ -29,7 +29,7 @@ class ConnectSyncing(
 ) : SubscriptionConnect<Boolean> {
 
     companion object {
-        private val log = LoggerFactory.getLogger(ConnectSyncing::class.java)
+        private val log = noCoLogger(ConnectSyncing::class)
     }
 
     private var connected: Flux<Boolean>? = null

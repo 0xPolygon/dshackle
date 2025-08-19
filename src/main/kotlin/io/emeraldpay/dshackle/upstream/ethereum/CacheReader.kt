@@ -10,7 +10,7 @@ import io.emeraldpay.dshackle.upstream.MethodSpecificReader
 import io.emeraldpay.dshackle.upstream.rpcclient.DshackleRequest
 import io.emeraldpay.dshackle.upstream.rpcclient.DshackleResponse
 import io.emeraldpay.etherjar.hex.HexQuantity
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Mono
 
 class CacheReader(
@@ -18,7 +18,7 @@ class CacheReader(
 ) : MethodSpecificReader() {
 
     companion object {
-        private val log = LoggerFactory.getLogger(CacheReader::class.java)
+        private val log = noCoLogger(CacheReader::class)
     }
 
     private val blockByHash = BlockByHash(caches)

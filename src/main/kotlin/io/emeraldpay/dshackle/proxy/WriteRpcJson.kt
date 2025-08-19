@@ -20,7 +20,7 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import io.emeraldpay.dshackle.Global
 import io.emeraldpay.dshackle.rpc.NativeCall
 import io.emeraldpay.dshackle.upstream.rpcclient.JsonRpcResponse
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
@@ -33,7 +33,7 @@ import java.util.function.Function
 open class WriteRpcJson {
 
     companion object {
-        private val log = LoggerFactory.getLogger(WriteRpcJson::class.java)
+        private val log = noCoLogger(WriteRpcJson::class)
     }
 
     private val objectMapper: ObjectMapper = Global.objectMapper

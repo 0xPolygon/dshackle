@@ -11,7 +11,7 @@ import io.emeraldpay.dshackle.reader.Reader
 import io.emeraldpay.dshackle.upstream.Head
 import io.emeraldpay.dshackle.upstream.rpcclient.DshackleRequest
 import io.emeraldpay.dshackle.upstream.rpcclient.DshackleResponse
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Mono
 import java.util.concurrent.atomic.AtomicReference
 
@@ -21,7 +21,7 @@ open class DataReaders(
 ) {
 
     companion object {
-        private val log = LoggerFactory.getLogger(DataReaders::class.java)
+        private val log = noCoLogger(DataReaders::class)
     }
 
     private val objectMapper: ObjectMapper = Global.objectMapper

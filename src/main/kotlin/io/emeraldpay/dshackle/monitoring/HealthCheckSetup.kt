@@ -19,7 +19,7 @@ import com.sun.net.httpserver.HttpServer
 import io.emeraldpay.dshackle.config.HealthConfig
 import io.emeraldpay.dshackle.upstream.MultistreamHolder
 import io.emeraldpay.dshackle.upstream.UpstreamAvailability
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
@@ -34,7 +34,7 @@ class HealthCheckSetup(
 ) {
 
     companion object {
-        private val log = LoggerFactory.getLogger(HealthCheckSetup::class.java)
+        private val log = noCoLogger(HealthCheckSetup::class)
     }
 
     @PostConstruct

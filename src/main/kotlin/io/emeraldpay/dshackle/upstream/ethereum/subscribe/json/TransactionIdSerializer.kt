@@ -19,12 +19,12 @@ import com.fasterxml.jackson.core.JsonGenerator
 import com.fasterxml.jackson.databind.JsonSerializer
 import com.fasterxml.jackson.databind.SerializerProvider
 import io.emeraldpay.etherjar.domain.TransactionId
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 
 class TransactionIdSerializer : JsonSerializer<TransactionId>() {
 
     companion object {
-        private val log = LoggerFactory.getLogger(TransactionIdSerializer::class.java)
+        private val log = noCoLogger(TransactionIdSerializer::class)
     }
 
     override fun serialize(value: TransactionId?, gen: JsonGenerator, serializers: SerializerProvider) {

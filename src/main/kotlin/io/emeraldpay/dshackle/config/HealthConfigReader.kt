@@ -17,7 +17,7 @@ package io.emeraldpay.dshackle.config
 
 import io.emeraldpay.api.Chain
 import io.emeraldpay.dshackle.Global
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.yaml.snakeyaml.nodes.CollectionNode
 import org.yaml.snakeyaml.nodes.MappingNode
 import java.io.InputStream
@@ -25,7 +25,7 @@ import java.io.InputStream
 class HealthConfigReader : YamlConfigReader(), ConfigReader<HealthConfig> {
 
     companion object {
-        private val log = LoggerFactory.getLogger(HealthConfigReader::class.java)
+        private val log = noCoLogger(HealthConfigReader::class)
     }
 
     fun read(input: InputStream): HealthConfig {

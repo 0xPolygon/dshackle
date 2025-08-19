@@ -25,7 +25,7 @@ import io.emeraldpay.etherjar.rpc.RpcResponseError
 import io.emeraldpay.etherjar.rpc.json.BlockJson
 import io.emeraldpay.etherjar.rpc.json.TransactionJson
 import io.emeraldpay.etherjar.rpc.json.TransactionRefJson
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Mono
 import reactor.util.retry.Retry
 import java.time.Duration
@@ -40,7 +40,7 @@ open class DataReaders(
 ) {
 
     companion object {
-        private val log = LoggerFactory.getLogger(DataReaders::class.java)
+        private val log = noCoLogger(DataReaders::class)
     }
 
     private val objectMapper: ObjectMapper = Global.objectMapper
@@ -49,11 +49,11 @@ open class DataReaders(
     val blockReaderById: Reader<BlockId, BlockContainer>
     val blockReaderParsed: Reader<BlockHash, BlockJson<TransactionRefJson>>
     val blockByHeightReader: Reader<Long, BlockContainer>
-    open val blocksByHeightParsed: Reader<Long, BlockJson<TransactionRefJson>>
+    val blocksByHeightParsed: Reader<Long, BlockJson<TransactionRefJson>>
 
     val txReader: Reader<TransactionId, TxContainer>
     val txReaderById: Reader<TxId, TxContainer>
-    open val txReaderParsed: Reader<TransactionId, TransactionJson>
+    val txReaderParsed: Reader<TransactionId, TransactionJson>
 
     val receiptReader: Reader<TransactionId, ByteArray>
     val receiptReaderById: Reader<TxId, ByteArray>
@@ -165,7 +165,7 @@ open class DataReaders(
             .flatMap { blockbytes ->
                 val block = objectMapper.readValue(blockbytes, BlockJson::class.java) as BlockJson<TransactionRefJson>?
                 if (block == null) {
-                    Mono.empty<BlockContainer>()
+                    Mono.empty()
                 } else {
                     Mono.just(BlockContainer.from(block, blockbytes))
                 }

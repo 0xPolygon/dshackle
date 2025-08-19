@@ -20,7 +20,7 @@ import io.emeraldpay.dshackle.upstream.Head
 import io.emeraldpay.dshackle.upstream.ethereum.subscribe.json.NewHeadMessage
 import io.emeraldpay.etherjar.rpc.json.BlockJson
 import io.emeraldpay.etherjar.rpc.json.TransactionRefJson
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Flux
 
 /**
@@ -33,7 +33,7 @@ class ProduceNewHeads(
 ) {
 
     companion object {
-        private val log = LoggerFactory.getLogger(ProduceNewHeads::class.java)
+        private val log = noCoLogger(ProduceNewHeads::class)
     }
 
     private val objectMapper = Global.objectMapper

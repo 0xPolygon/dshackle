@@ -24,7 +24,7 @@ import io.emeraldpay.dshackle.proxy.ReadRpcJson
 import io.emeraldpay.dshackle.proxy.WriteRpcJson
 import io.emeraldpay.dshackle.rpc.NativeCall
 import io.emeraldpay.dshackle.rpc.NativeSubscribe
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import javax.annotation.PostConstruct
@@ -46,7 +46,7 @@ class ProxyStarter(
 ) {
 
     companion object {
-        private val log = LoggerFactory.getLogger(ProxyStarter::class.java)
+        private val log = noCoLogger(ProxyStarter::class)
     }
 
     @PostConstruct

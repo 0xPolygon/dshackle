@@ -24,7 +24,7 @@ import io.emeraldpay.dshackle.upstream.rpcclient.JsonRpcResponse
 import io.emeraldpay.etherjar.rpc.RequestJson
 import io.emeraldpay.etherjar.rpc.RpcException
 import io.emeraldpay.etherjar.rpc.RpcResponseError
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.stereotype.Service
 import java.io.IOException
 import java.util.function.Function
@@ -36,7 +36,7 @@ import java.util.function.Function
 open class ReadRpcJson : Function<ByteArray, ProxyCall> {
 
     companion object {
-        private val log = LoggerFactory.getLogger(ReadRpcJson::class.java)
+        private val log = noCoLogger(ReadRpcJson::class)
         private val spaces = " \n\t".toByteArray()
     }
 

@@ -21,7 +21,7 @@ import io.emeraldpay.dshackle.reader.Reader
 import io.emeraldpay.dshackle.upstream.Head
 import io.emeraldpay.dshackle.upstream.Selector
 import io.emeraldpay.etherjar.hex.HexQuantity
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Mono
 import java.util.Collections
 
@@ -34,7 +34,7 @@ class EthereumCallSelector(
 ) {
 
     companion object {
-        private val log = LoggerFactory.getLogger(EthereumCallSelector::class.java)
+        private val log = noCoLogger(EthereumCallSelector::class)
 
         // ref https://eth.wiki/json-rpc/API#the-default-block-parameter
         private val TAG_METHODS = listOf(

@@ -1,7 +1,7 @@
 package io.emeraldpay.dshackle.upstream.rpcclient
 
 import io.emeraldpay.dshackle.reader.StandardRpcReader
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Mono
 import java.util.function.Consumer
 
@@ -15,7 +15,7 @@ class JsonRpcSwitchClient(
 ) : StandardRpcReader, WithHttpStatus {
 
     companion object {
-        private val log = LoggerFactory.getLogger(JsonRpcSwitchClient::class.java)
+        private val log = noCoLogger(JsonRpcSwitchClient::class)
     }
 
     override var onHttpError: Consumer<Int>? = null

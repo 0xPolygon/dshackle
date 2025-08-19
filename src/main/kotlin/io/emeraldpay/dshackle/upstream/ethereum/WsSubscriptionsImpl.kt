@@ -17,7 +17,7 @@ package io.emeraldpay.dshackle.upstream.ethereum
 
 import io.emeraldpay.dshackle.upstream.rpcclient.JsonRpcException
 import io.emeraldpay.dshackle.upstream.rpcclient.JsonRpcRequest
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 import java.util.concurrent.atomic.AtomicLong
@@ -28,7 +28,7 @@ class WsSubscriptionsImpl(
 ) : WsSubscriptions {
 
     companion object {
-        private val log = LoggerFactory.getLogger(WsSubscriptionsImpl::class.java)
+        private val log = noCoLogger(WsSubscriptionsImpl::class)
     }
 
     private val ids = AtomicLong(1)

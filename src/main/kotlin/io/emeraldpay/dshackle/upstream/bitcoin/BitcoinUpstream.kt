@@ -23,7 +23,7 @@ import io.emeraldpay.dshackle.upstream.ForkWatch
 import io.emeraldpay.dshackle.upstream.IngressSubscription
 import io.emeraldpay.dshackle.upstream.calls.CallMethods
 import io.emeraldpay.dshackle.upstream.calls.DefaultBitcoinMethods
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 
 abstract class BitcoinUpstream(
     id: String,
@@ -45,7 +45,7 @@ abstract class BitcoinUpstream(
     ) : this(id, chain, forkWatch, options, role, DefaultBitcoinMethods(), QuorumForLabels.QuorumItem.empty())
 
     companion object {
-        private val log = LoggerFactory.getLogger(BitcoinUpstream::class.java)
+        private val log = noCoLogger(BitcoinUpstream::class)
     }
 
     abstract fun getIngressSubscription(): IngressSubscription

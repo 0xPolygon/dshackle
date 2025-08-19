@@ -10,7 +10,7 @@ import io.emeraldpay.dshackle.upstream.Selector
 import io.emeraldpay.dshackle.upstream.bitcoin.data.SimpleUnspent
 import io.emeraldpay.dshackle.upstream.grpc.BitcoinGrpcUpstream
 import org.bitcoinj.core.Address
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Mono
 
 class RemoteUnspentReader(
@@ -18,7 +18,7 @@ class RemoteUnspentReader(
 ) : UnspentReader {
 
     companion object {
-        private val log = LoggerFactory.getLogger(RemoteUnspentReader::class.java)
+        private val log = noCoLogger(RemoteUnspentReader::class)
     }
 
     private val selector = Selector.LocalAndMatcher(

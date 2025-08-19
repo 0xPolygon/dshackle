@@ -17,7 +17,8 @@ package io.emeraldpay.dshackle.upstream.rpcclient
 
 import io.emeraldpay.dshackle.Global
 import io.emeraldpay.dshackle.reader.StandardRpcReader
-import org.slf4j.LoggerFactory
+import io.klogging.NoCoLogger
+import io.klogging.noCoLogger
 import reactor.core.publisher.Mono
 import java.util.function.Function
 
@@ -30,18 +31,18 @@ class LoggingJsonRpcReader(
 ) : StandardRpcReader {
 
     companion object {
-        private val log = LoggerFactory.getLogger(LoggingJsonRpcReader::class.java)
+        private val log = noCoLogger(LoggingJsonRpcReader::class)
     }
 
     var requestContext = Global.monitoring
 
     override fun read(key: JsonRpcRequest): Mono<JsonRpcResponse> {
         return delegate.read(key)
-            .transform(logger(key))
-            .contextWrite(requestContext.ingress.startExecuting())
-            // make sure the logger would have the actual request details. b/c if it may be transformed from what was
-            // originally made on the client side
-            .contextWrite(requestContext.ingress.withRequest(key))
-            .contextWrite(requestContext.ingress.ensureInitialized())
+//            .transform(noCoLogger(key))
+//            .contextWrite(requestContext.ingress.startExecuting())
+//            // make sure the logger would have the actual request details. b/c if it may be transformed from what was
+//            // originally made on the client side
+//            .contextWrite(requestContext.ingress.withRequest(key))
+//            .contextWrite(requestContext.ingress.ensureInitialized())
     }
 }

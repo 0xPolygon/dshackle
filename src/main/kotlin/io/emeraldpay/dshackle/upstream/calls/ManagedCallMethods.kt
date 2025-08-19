@@ -22,7 +22,7 @@ import io.emeraldpay.dshackle.quorum.CallQuorum
 import io.emeraldpay.dshackle.quorum.NonEmptyQuorum
 import io.emeraldpay.dshackle.quorum.NotLaggingQuorum
 import org.apache.commons.collections4.Factory
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import java.io.IOException
 import java.util.Collections
 
@@ -38,7 +38,7 @@ class ManagedCallMethods(
 ) : CallMethods {
 
     companion object {
-        private val log = LoggerFactory.getLogger(ManagedCallMethods::class.java)
+        private val log = noCoLogger(ManagedCallMethods::class)
         private val defaultQuorum: Factory<CallQuorum> = Factory<CallQuorum> {
             AlwaysQuorum()
         }

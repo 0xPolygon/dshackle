@@ -17,7 +17,7 @@
 package io.emeraldpay.dshackle.upstream
 
 import io.emeraldpay.dshackle.data.BlockContainer
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.context.Lifecycle
 import reactor.core.Disposable
 import reactor.core.publisher.Flux
@@ -35,7 +35,7 @@ abstract class HeadLagObserver(
     private val followers: Collection<Upstream>
 ) : Lifecycle {
 
-    private val log = LoggerFactory.getLogger(HeadLagObserver::class.java)
+    private val log = noCoLogger(HeadLagObserver::class)
 
     private var current: Disposable? = null
 

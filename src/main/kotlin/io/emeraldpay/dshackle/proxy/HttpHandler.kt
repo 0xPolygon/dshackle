@@ -26,7 +26,7 @@ import io.emeraldpay.etherjar.rpc.RpcException
 import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 import org.reactivestreams.Publisher
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.http.HttpHeaders
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
@@ -49,7 +49,7 @@ class HttpHandler(
 ) : BaseHandler(writeRpcJson, nativeCall, requestMetrics) {
 
     companion object {
-        private val log = LoggerFactory.getLogger(HttpHandler::class.java)
+        private val log = noCoLogger(HttpHandler::class)
     }
 
     private fun addCorsHeadersIfSet(resp: HttpServerResponse): HttpServerResponse {

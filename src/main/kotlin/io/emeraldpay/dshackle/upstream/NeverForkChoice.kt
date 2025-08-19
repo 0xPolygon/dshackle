@@ -16,13 +16,13 @@
 package io.emeraldpay.dshackle.upstream
 
 import io.emeraldpay.dshackle.data.BlockContainer
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import java.util.concurrent.atomic.AtomicLong
 
 class NeverForkChoice : ForkChoice {
 
     companion object {
-        private val log = LoggerFactory.getLogger(NeverForkChoice::class.java)
+        private val log = noCoLogger(NeverForkChoice::class)
     }
 
     private val height = AtomicLong(0)

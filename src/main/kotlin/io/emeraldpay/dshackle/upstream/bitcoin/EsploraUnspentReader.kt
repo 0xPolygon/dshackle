@@ -18,7 +18,7 @@ package io.emeraldpay.dshackle.upstream.bitcoin
 import io.emeraldpay.dshackle.upstream.bitcoin.data.EsploraUnspent
 import io.emeraldpay.dshackle.upstream.bitcoin.data.SimpleUnspent
 import org.bitcoinj.core.Address
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Mono
 import java.util.function.Function
 
@@ -27,7 +27,7 @@ class EsploraUnspentReader(
 ) : UnspentReader {
 
     companion object {
-        private val log = LoggerFactory.getLogger(EsploraUnspentReader::class.java)
+        private val log = noCoLogger(EsploraUnspentReader::class)
     }
 
     private val convert: (T: EsploraUnspent) -> SimpleUnspent = { base ->

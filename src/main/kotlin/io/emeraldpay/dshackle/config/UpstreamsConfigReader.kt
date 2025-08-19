@@ -18,7 +18,7 @@ package io.emeraldpay.dshackle.config
 
 import io.emeraldpay.dshackle.FileResolver
 import org.apache.commons.lang3.StringUtils
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.yaml.snakeyaml.nodes.MappingNode
 import org.yaml.snakeyaml.nodes.ScalarNode
 import reactor.util.function.Tuples
@@ -31,7 +31,7 @@ class UpstreamsConfigReader(
     private val fileResolver: FileResolver
 ) : YamlConfigReader(), ConfigReader<UpstreamsConfig> {
 
-    private val log = LoggerFactory.getLogger(UpstreamsConfigReader::class.java)
+    private val log = noCoLogger(UpstreamsConfigReader::class)
     private val authConfigReader = AuthConfigReader()
 
     fun read(input: InputStream): UpstreamsConfig? {

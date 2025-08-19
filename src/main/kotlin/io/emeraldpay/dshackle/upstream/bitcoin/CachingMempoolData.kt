@@ -23,7 +23,7 @@ import io.emeraldpay.dshackle.upstream.Head
 import io.emeraldpay.dshackle.upstream.Selector
 import io.emeraldpay.dshackle.upstream.rpcclient.DshackleRequest
 import io.emeraldpay.dshackle.upstream.rpcclient.DshackleResponse
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.context.Lifecycle
 import reactor.core.Disposable
 import reactor.core.publisher.Mono
@@ -38,7 +38,7 @@ open class CachingMempoolData(
 ) : Lifecycle {
 
     companion object {
-        private val log = LoggerFactory.getLogger(CachingMempoolData::class.java)
+        private val log = noCoLogger(CachingMempoolData::class)
         private val TTL = Duration.ofSeconds(15)
     }
 

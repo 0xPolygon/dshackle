@@ -27,7 +27,7 @@ import io.micrometer.core.instrument.Counter
 import io.micrometer.core.instrument.Metrics
 import io.micrometer.core.instrument.Timer
 import org.apache.commons.lang3.time.StopWatch
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.DependsOn
 import org.springframework.stereotype.Service
@@ -49,7 +49,7 @@ class BlockchainRpc(
     @Autowired private val estimateFee: EstimateFee,
 ) : ReactorBlockchainGrpc.BlockchainImplBase() {
 
-    private val log = LoggerFactory.getLogger(BlockchainRpc::class.java)
+    private val log = noCoLogger(BlockchainRpc::class)
 
     private val requestContext = Global.monitoring.egress
 

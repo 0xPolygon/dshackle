@@ -34,7 +34,7 @@ import io.emeraldpay.dshackle.upstream.bitcoin.subscribe.BitcoinEgressSubscripti
 import io.emeraldpay.dshackle.upstream.rpcclient.DshackleRequest
 import io.emeraldpay.dshackle.upstream.rpcclient.DshackleResponse
 import io.emeraldpay.dshackle.upstream.signature.ResponseSigner
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.context.Lifecycle
 import reactor.core.publisher.Mono
 import java.util.concurrent.atomic.AtomicReference
@@ -48,7 +48,7 @@ open class BitcoinMultistream(
 ) : Multistream(chain, sourceUpstreams as MutableList<Upstream>, caches), DshackleRpcReader, Lifecycle {
 
     companion object {
-        private val log = LoggerFactory.getLogger(BitcoinMultistream::class.java)
+        private val log = noCoLogger(BitcoinMultistream::class)
     }
 
     private val head: AtomicReference<Head> = AtomicReference(EmptyHead())

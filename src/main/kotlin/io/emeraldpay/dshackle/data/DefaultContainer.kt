@@ -15,7 +15,7 @@
  */
 package io.emeraldpay.dshackle.data
 
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 
 class DefaultContainer<T>(
     val txId: TxId? = null,
@@ -26,6 +26,6 @@ class DefaultContainer<T>(
 ) : SourceContainer(json, parsed) {
 
     companion object {
-        private val log = LoggerFactory.getLogger(DefaultContainer::class.java)
+        private val log = noCoLogger(DefaultContainer::class)
     }
 }

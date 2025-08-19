@@ -36,7 +36,7 @@ import io.netty.handler.codec.http.HttpHeaderNames
 import io.netty.resolver.DefaultAddressResolverGroup
 import org.apache.commons.lang3.time.StopWatch
 import org.reactivestreams.Publisher
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.util.backoff.BackOff
 import org.springframework.util.backoff.BackOffExecution
 import org.springframework.util.backoff.ExponentialBackOff
@@ -71,7 +71,7 @@ open class WsConnectionImpl(
 ) : AutoCloseable, WsConnection {
 
     companion object {
-        private val log = LoggerFactory.getLogger(WsConnectionImpl::class.java)
+        private val log = noCoLogger(WsConnectionImpl::class)
 
         private const val IDS_START = 100
 

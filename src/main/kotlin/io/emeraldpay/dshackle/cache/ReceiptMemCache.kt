@@ -21,7 +21,7 @@ import io.emeraldpay.dshackle.data.DefaultContainer
 import io.emeraldpay.dshackle.data.TxId
 import io.emeraldpay.dshackle.reader.Reader
 import io.emeraldpay.etherjar.rpc.json.TransactionReceiptJson
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Mono
 
 /**
@@ -33,7 +33,7 @@ open class ReceiptMemCache(
 ) : Reader<TxId, ByteArray> {
 
     companion object {
-        private val log = LoggerFactory.getLogger(ReceiptMemCache::class.java)
+        private val log = noCoLogger(ReceiptMemCache::class)
     }
 
     private val mapping = Caffeine.newBuilder()

@@ -31,7 +31,7 @@ import io.emeraldpay.etherjar.rpc.RpcException
 import io.emeraldpay.etherjar.rpc.json.BlockJson
 import io.emeraldpay.etherjar.rpc.json.TransactionJson
 import io.emeraldpay.etherjar.rpc.json.TransactionRefJson
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Flux
@@ -59,7 +59,7 @@ class TrackEthereumTx(
 
     var scheduler: Scheduler = Schedulers.boundedElastic()
 
-    private val log = LoggerFactory.getLogger(TrackEthereumTx::class.java)
+    private val log = noCoLogger(TrackEthereumTx::class)
 
     override fun isSupported(chain: Chain): Boolean {
         return BlockchainType.from(chain) == BlockchainType.ETHEREUM && multistreamHolder.isAvailable(chain)

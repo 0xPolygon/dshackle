@@ -42,7 +42,7 @@ import io.emeraldpay.dshackle.upstream.rpcclient.JsonRpcRequest
 import io.emeraldpay.dshackle.upstream.rpcclient.JsonRpcResponse
 import io.emeraldpay.etherjar.rpc.RpcException
 import org.reactivestreams.Publisher
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.context.Lifecycle
 import reactor.core.publisher.Mono
 import java.math.BigInteger
@@ -68,7 +68,7 @@ class BitcoinGrpcUpstream(
     Lifecycle {
 
     companion object {
-        private val log = LoggerFactory.getLogger(BitcoinGrpcUpstream::class.java)
+        private val log = noCoLogger(BitcoinGrpcUpstream::class)
     }
 
     constructor(parentId: String, role: UpstreamsConfig.UpstreamRole, chain: Chain, remote: ReactorBlockchainStub, client: JsonRpcGrpcClient) :

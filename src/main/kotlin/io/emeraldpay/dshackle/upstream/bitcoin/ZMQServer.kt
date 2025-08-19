@@ -1,6 +1,6 @@
 package io.emeraldpay.dshackle.upstream.bitcoin
 
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.context.Lifecycle
 import org.zeromq.SocketType
 import org.zeromq.ZContext
@@ -18,7 +18,7 @@ class ZMQServer(
 ) : Lifecycle {
 
     companion object {
-        private val log = LoggerFactory.getLogger(ZMQServer::class.java)
+        private val log = noCoLogger(ZMQServer::class)
         private val RECEIVE_TIME_MS = 100
     }
 

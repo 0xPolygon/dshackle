@@ -19,7 +19,7 @@ package io.emeraldpay.dshackle.config
 import io.emeraldpay.api.Chain
 import io.emeraldpay.dshackle.Global
 import org.apache.commons.lang3.StringUtils
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.yaml.snakeyaml.nodes.MappingNode
 import java.io.InputStream
 
@@ -29,7 +29,7 @@ import java.io.InputStream
 class ProxyConfigReader : YamlConfigReader(), ConfigReader<ProxyConfig> {
 
     companion object {
-        private val log = LoggerFactory.getLogger(ProxyConfigReader::class.java)
+        private val log = noCoLogger(ProxyConfigReader::class)
     }
 
     private var filename = "dshackle.yaml"

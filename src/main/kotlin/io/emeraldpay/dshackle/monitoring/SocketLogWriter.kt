@@ -18,7 +18,7 @@ package io.emeraldpay.dshackle.monitoring
 import io.emeraldpay.dshackle.Global
 import io.emeraldpay.dshackle.SilentException
 import io.emeraldpay.dshackle.commons.RateLimitedAction
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.util.backoff.ExponentialBackOff
 import java.io.IOException
 import java.net.InetSocketAddress
@@ -43,7 +43,7 @@ class SocketLogWriter<T>(
 ) : LogWriter<T>, BufferingLogWriter<T>(serializer, encoding, metrics = metrics, queueLimit = bufferSize ?: DEFAULT_BUFFER_SIZE) {
 
     companion object {
-        private val log = LoggerFactory.getLogger(SocketLogWriter::class.java)
+        private val log = noCoLogger(SocketLogWriter::class)
 
         private const val DEFAULT_BUFFER_SIZE: Int = 5000
     }

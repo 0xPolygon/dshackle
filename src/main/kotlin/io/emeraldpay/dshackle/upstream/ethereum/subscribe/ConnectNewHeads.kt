@@ -18,7 +18,7 @@ package io.emeraldpay.dshackle.upstream.ethereum.subscribe
 import io.emeraldpay.dshackle.upstream.SubscriptionConnect
 import io.emeraldpay.dshackle.upstream.ethereum.EthereumMultistream
 import io.emeraldpay.dshackle.upstream.ethereum.subscribe.json.NewHeadMessage
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Flux
 import reactor.core.scheduler.Schedulers
 import java.time.Duration
@@ -33,7 +33,7 @@ class ConnectNewHeads(
 ) : SubscriptionConnect<NewHeadMessage> {
 
     companion object {
-        private val log = LoggerFactory.getLogger(ConnectNewHeads::class.java)
+        private val log = noCoLogger(ConnectNewHeads::class)
     }
 
     private var connected: Flux<NewHeadMessage>? = null

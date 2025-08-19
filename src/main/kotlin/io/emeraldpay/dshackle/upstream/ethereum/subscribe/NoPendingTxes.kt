@@ -16,13 +16,13 @@
 package io.emeraldpay.dshackle.upstream.ethereum.subscribe
 
 import io.emeraldpay.etherjar.domain.TransactionId
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Flux
 
 class NoPendingTxes : PendingTxesSource {
 
     companion object {
-        private val log = LoggerFactory.getLogger(NoPendingTxes::class.java)
+        private val log = noCoLogger(NoPendingTxes::class)
 
         val DEFAULT = NoPendingTxes()
     }

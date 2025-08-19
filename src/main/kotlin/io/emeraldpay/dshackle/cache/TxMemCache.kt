@@ -21,7 +21,7 @@ import io.emeraldpay.dshackle.data.BlockId
 import io.emeraldpay.dshackle.data.TxContainer
 import io.emeraldpay.dshackle.data.TxId
 import io.emeraldpay.dshackle.reader.Reader
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Mono
 
 /**
@@ -33,7 +33,7 @@ open class TxMemCache(
 ) : Reader<TxId, TxContainer> {
 
     companion object {
-        private val log = LoggerFactory.getLogger(TxMemCache::class.java)
+        private val log = noCoLogger(TxMemCache::class)
     }
 
     private val mapping = Caffeine.newBuilder()

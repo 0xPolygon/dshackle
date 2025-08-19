@@ -36,7 +36,7 @@ import io.emeraldpay.dshackle.upstream.rpcclient.JsonRpcException
 import io.emeraldpay.dshackle.upstream.signature.ResponseSigner
 import io.emeraldpay.etherjar.rpc.RpcException
 import org.apache.commons.lang3.StringUtils
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Flux
@@ -48,7 +48,7 @@ open class NativeCall(
     @Autowired private val multistreamHolder: MultistreamHolder,
 ) {
 
-    private val log = LoggerFactory.getLogger(NativeCall::class.java)
+    private val log = noCoLogger(NativeCall::class)
     private val objectMapper: ObjectMapper = Global.objectMapper
     private val ethereumCallSelectors = EnumMap<Chain, EthereumCallSelector>(Chain::class.java)
 

@@ -8,7 +8,7 @@ import io.emeraldpay.dshackle.upstream.bitcoin.data.SimpleUnspent
 import io.emeraldpay.dshackle.upstream.rpcclient.DshackleRequest
 import io.emeraldpay.dshackle.upstream.rpcclient.DshackleResponse
 import org.bitcoinj.core.Address
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Mono
 
 class UnspentAsRpcReader(
@@ -16,7 +16,7 @@ class UnspentAsRpcReader(
 ) : DshackleRpcReader {
 
     companion object {
-        private val log = LoggerFactory.getLogger(UnspentAsRpcReader::class.java)
+        private val log = noCoLogger(UnspentAsRpcReader::class)
     }
 
     override fun read(key: DshackleRequest): Mono<DshackleResponse> {

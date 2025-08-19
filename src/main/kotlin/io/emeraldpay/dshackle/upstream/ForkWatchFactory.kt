@@ -16,7 +16,7 @@
 package io.emeraldpay.dshackle.upstream
 
 import io.emeraldpay.api.Chain
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.util.EnumMap
@@ -29,7 +29,7 @@ class ForkWatchFactory(
 ) {
 
     companion object {
-        private val log = LoggerFactory.getLogger(ForkWatchFactory::class.java)
+        private val log = noCoLogger(ForkWatchFactory::class)
     }
 
     private val initialized = EnumMap<Chain, ForkWatch>(Chain::class.java)

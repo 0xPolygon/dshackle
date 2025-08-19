@@ -28,7 +28,7 @@ import io.micrometer.core.instrument.Metrics
 import io.micrometer.core.instrument.Timer
 import io.netty.channel.ChannelHandler
 import io.netty.channel.ChannelHandlerContext
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.netty.http.server.HttpServer
 import reactor.netty.http.server.HttpServerRoutes
 import java.util.EnumMap
@@ -50,7 +50,7 @@ class ProxyServer(
 ) {
 
     companion object {
-        private val log = LoggerFactory.getLogger(ProxyServer::class.java)
+        private val log = noCoLogger(ProxyServer::class)
     }
 
     private val errorHandler: ChannelHandler = object : ChannelHandler {

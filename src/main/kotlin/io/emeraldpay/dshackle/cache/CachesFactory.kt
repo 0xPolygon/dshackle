@@ -24,7 +24,7 @@ import io.lettuce.core.api.StatefulRedisConnection
 import io.lettuce.core.codec.ByteArrayCodec
 import io.lettuce.core.codec.RedisCodec
 import io.lettuce.core.codec.StringCodec
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Repository
 import java.util.EnumMap
@@ -37,7 +37,7 @@ open class CachesFactory(
 ) {
 
     companion object {
-        private val log = LoggerFactory.getLogger(CachesFactory::class.java)
+        private val log = noCoLogger(CachesFactory::class)
         private const val CONFIG_PREFIX = "cache.redis"
     }
 

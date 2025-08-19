@@ -16,14 +16,14 @@
 package io.emeraldpay.dshackle.config
 
 import io.emeraldpay.dshackle.Global
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.yaml.snakeyaml.nodes.MappingNode
 import java.io.InputStream
 import java.util.Locale
 
 class TokensConfigReader : YamlConfigReader(), ConfigReader<TokensConfig> {
 
-    private val log = LoggerFactory.getLogger(TokensConfigReader::class.java)
+    private val log = noCoLogger(TokensConfigReader::class)
 
     fun read(input: InputStream): TokensConfig? {
         val configNode = readNode(input)

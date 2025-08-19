@@ -21,7 +21,7 @@ import io.emeraldpay.dshackle.monitoring.record.RequestRecord
 import io.emeraldpay.dshackle.upstream.rpcclient.JsonRpcException
 import io.emeraldpay.dshackle.upstream.rpcclient.JsonRpcRequest
 import io.emeraldpay.dshackle.upstream.rpcclient.JsonRpcResponse
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Mono
 import reactor.util.context.ContextView
 import java.util.function.Function
@@ -31,7 +31,7 @@ class IngressLogProcessor(
 ) {
 
     companion object {
-        private val log = LoggerFactory.getLogger(IngressLogProcessor::class.java)
+        private val log = noCoLogger(IngressLogProcessor::class)
     }
 
     var context = Global.monitoring.ingress

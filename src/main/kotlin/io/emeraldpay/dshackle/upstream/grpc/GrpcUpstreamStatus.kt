@@ -21,14 +21,14 @@ import io.emeraldpay.dshackle.startup.QuorumForLabels
 import io.emeraldpay.dshackle.upstream.calls.CallMethods
 import io.emeraldpay.dshackle.upstream.calls.DirectCallMethods
 import io.emeraldpay.dshackle.upstream.calls.NoCallMethods
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import java.util.Collections
 import java.util.concurrent.atomic.AtomicReference
 
 class GrpcUpstreamStatus {
 
     companion object {
-        private val log = LoggerFactory.getLogger(GrpcUpstreamStatus::class.java)
+        private val log = noCoLogger(GrpcUpstreamStatus::class)
     }
 
     private val allLabels: AtomicReference<Collection<UpstreamsConfig.Labels>> = AtomicReference(emptyList())

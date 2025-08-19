@@ -16,7 +16,7 @@
 package io.emeraldpay.dshackle.upstream.bitcoin
 
 import org.bitcoinj.core.Address
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Mono
 
 open class AddressActiveCheck(
@@ -24,7 +24,7 @@ open class AddressActiveCheck(
 ) {
 
     companion object {
-        private val log = LoggerFactory.getLogger(AddressActiveCheck::class.java)
+        private val log = noCoLogger(AddressActiveCheck::class)
     }
 
     open fun isActive(address: Address): Mono<Boolean> {

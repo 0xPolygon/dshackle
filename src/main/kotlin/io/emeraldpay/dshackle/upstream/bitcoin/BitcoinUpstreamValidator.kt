@@ -20,7 +20,7 @@ import io.emeraldpay.dshackle.reader.StandardRpcReader
 import io.emeraldpay.dshackle.upstream.UpstreamAvailability
 import io.emeraldpay.dshackle.upstream.rpcclient.JsonRpcRequest
 import io.emeraldpay.dshackle.upstream.rpcclient.JsonRpcResponse
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.scheduling.concurrent.CustomizableThreadFactory
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
@@ -34,7 +34,7 @@ class BitcoinUpstreamValidator(
 ) {
 
     companion object {
-        private val log = LoggerFactory.getLogger(BitcoinUpstreamValidator::class.java)
+        private val log = noCoLogger(BitcoinUpstreamValidator::class)
         val scheduler =
             Schedulers.fromExecutor(Executors.newCachedThreadPool(CustomizableThreadFactory("bitcoin-validator")))
     }

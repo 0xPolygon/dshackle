@@ -36,7 +36,7 @@ import io.emeraldpay.dshackle.upstream.ethereum.subscribe.PendingTxesSource
 import io.emeraldpay.dshackle.upstream.rpcclient.DshackleRequest
 import io.emeraldpay.dshackle.upstream.rpcclient.DshackleResponse
 import io.emeraldpay.dshackle.upstream.signature.ResponseSigner
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.context.Lifecycle
 import reactor.core.publisher.Mono
 import java.util.concurrent.atomic.AtomicReference
@@ -50,7 +50,7 @@ open class EthereumMultistream(
 ) : Multistream(chain, upstreams as MutableList<Upstream>, caches) {
 
     companion object {
-        private val log = LoggerFactory.getLogger(EthereumMultistream::class.java)
+        private val log = noCoLogger(EthereumMultistream::class)
     }
 
     private var head = AtomicReference<Head>(EmptyHead())
@@ -89,7 +89,7 @@ open class EthereumMultistream(
     }
 
     override fun init() {
-        if (upstreams.size > 0) {
+        if (upstreams.isNotEmpty()) {
             head.set(updateHead())
         }
         super.init()

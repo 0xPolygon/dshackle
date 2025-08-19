@@ -7,7 +7,7 @@ import org.bouncycastle.jce.spec.ECPublicKeySpec
 import org.bouncycastle.math.ec.ECPoint
 import org.bouncycastle.util.io.pem.PemObject
 import org.bouncycastle.util.io.pem.PemReader
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.beans.factory.FactoryBean
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Lazy
@@ -27,7 +27,7 @@ open class ResponseSignerFactory(
 ) : FactoryBean<ResponseSigner> {
 
     companion object {
-        private val log = LoggerFactory.getLogger(ResponseSignerFactory::class.java)
+        private val log = noCoLogger(ResponseSignerFactory::class)
     }
 
     fun readKey(algorithm: SignatureConfig.Algorithm, keyPath: String): Pair<ECPrivateKey, Long> {

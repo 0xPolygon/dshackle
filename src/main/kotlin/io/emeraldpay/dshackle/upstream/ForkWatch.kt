@@ -19,7 +19,7 @@ import io.emeraldpay.api.Chain
 import io.emeraldpay.dshackle.data.BlockContainer
 import io.micrometer.core.instrument.Counter
 import io.micrometer.core.instrument.Metrics
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.context.Lifecycle
 import reactor.core.Disposable
 import reactor.core.publisher.Flux
@@ -39,7 +39,7 @@ open class ForkWatch(
 ) : Lifecycle {
 
     companion object {
-        private val log = LoggerFactory.getLogger(ForkWatch::class.java)
+        private val log = noCoLogger(ForkWatch::class)
     }
 
     private val metrics = EnumMap<ForkChoice.Status, Counter>(ForkChoice.Status::class.java).also { metrics ->

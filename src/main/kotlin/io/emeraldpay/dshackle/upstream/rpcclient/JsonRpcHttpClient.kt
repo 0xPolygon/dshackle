@@ -25,7 +25,7 @@ import io.netty.handler.codec.http.HttpHeaders
 import io.netty.handler.ssl.SslContextBuilder
 import io.netty.resolver.DefaultAddressResolverGroup
 import org.apache.commons.lang3.time.StopWatch
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Mono
 import reactor.netty.http.client.HttpClient
 import reactor.netty.resources.ConnectionProvider
@@ -51,7 +51,7 @@ class JsonRpcHttpClient(
 ) : StandardRpcReader, WithHttpStatus {
 
     companion object {
-        private val log = LoggerFactory.getLogger(JsonRpcHttpClient::class.java)
+        private val log = noCoLogger(JsonRpcHttpClient::class)
 
         // default connection pool has only 1000 of pending connections, which is not always enough
         private val connectionProvider = ConnectionProvider.builder("json-rpc-pool")

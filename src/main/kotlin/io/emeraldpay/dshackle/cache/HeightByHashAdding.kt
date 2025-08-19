@@ -18,7 +18,7 @@ package io.emeraldpay.dshackle.cache
 import io.emeraldpay.dshackle.data.BlockContainer
 import io.emeraldpay.dshackle.data.BlockId
 import io.emeraldpay.dshackle.reader.Reader
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Mono
 
 /**
@@ -35,7 +35,7 @@ class HeightByHashAdding(
 ) : Reader<BlockId, Long> {
 
     companion object {
-        private val log = LoggerFactory.getLogger(HeightByHashAdding::class.java)
+        private val log = noCoLogger(HeightByHashAdding::class)
     }
 
     constructor(caches: Caches, upstreamReader: Reader<BlockId, BlockContainer>) :

@@ -23,7 +23,7 @@ import io.netty.handler.codec.http.HttpHeaders
 import io.netty.handler.ssl.SslContextBuilder
 import io.netty.resolver.DefaultAddressResolverGroup
 import org.bitcoinj.core.Address
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Mono
 import reactor.netty.http.client.HttpClient
 import java.io.ByteArrayInputStream
@@ -41,7 +41,7 @@ class EsploraClient(
 ) {
 
     companion object {
-        private val log = LoggerFactory.getLogger(EsploraClient::class.java)
+        private val log = noCoLogger(EsploraClient::class)
     }
 
     private val httpClient: HttpClient

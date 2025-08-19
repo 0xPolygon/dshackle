@@ -1,6 +1,6 @@
 package io.emeraldpay.dshackle.commons
 
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Flux
 import java.util.concurrent.atomic.AtomicLong
 import java.util.concurrent.locks.ReentrantReadWriteLock
@@ -21,7 +21,7 @@ class SharedFluxHolder<T>(
 ) {
 
     companion object {
-        private val log = LoggerFactory.getLogger(SharedFluxHolder::class.java)
+        private val log = noCoLogger(SharedFluxHolder::class)
     }
 
     private val ids = AtomicLong()

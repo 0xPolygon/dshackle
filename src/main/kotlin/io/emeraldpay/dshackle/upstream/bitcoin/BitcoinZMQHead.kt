@@ -9,7 +9,7 @@ import io.emeraldpay.dshackle.upstream.Head
 import io.emeraldpay.dshackle.upstream.rpcclient.JsonRpcRequest
 import io.emeraldpay.dshackle.upstream.rpcclient.JsonRpcResponse
 import org.apache.commons.codec.binary.Hex
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.context.Lifecycle
 import reactor.core.Disposable
 import reactor.core.publisher.Flux
@@ -24,7 +24,7 @@ class BitcoinZMQHead(
 ) : Head, AbstractHead(), Lifecycle {
 
     companion object {
-        private val log = LoggerFactory.getLogger(BitcoinZMQHead::class.java)
+        private val log = noCoLogger(BitcoinZMQHead::class)
     }
 
     private var refreshSubscription: Disposable? = null

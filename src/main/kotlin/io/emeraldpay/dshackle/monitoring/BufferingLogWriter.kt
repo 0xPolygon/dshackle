@@ -17,7 +17,7 @@ package io.emeraldpay.dshackle.monitoring
 
 import io.emeraldpay.dshackle.commons.DataQueue
 import io.emeraldpay.dshackle.commons.RateLimitedAction
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import java.nio.ByteBuffer
 import java.time.Duration
 
@@ -29,7 +29,7 @@ abstract class BufferingLogWriter<T>(
 ) : LogWriter<T> {
 
     companion object {
-        private val log = LoggerFactory.getLogger(BufferingLogWriter::class.java)
+        private val log = noCoLogger(BufferingLogWriter::class)
     }
 
     protected var onFull: () -> Unit = {}

@@ -1,7 +1,7 @@
 package io.emeraldpay.dshackle.commons
 
 import org.apache.commons.collections4.iterators.UnmodifiableIterator
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import java.time.Duration
 import java.util.LinkedList
 import java.util.TreeSet
@@ -20,7 +20,7 @@ class ExpiringSet<T>(
 ) : MutableSet<T> {
 
     companion object {
-        private val log = LoggerFactory.getLogger(ExpiringSet::class.java)
+        private val log = noCoLogger(ExpiringSet::class)
     }
 
     private val tree = TreeSet<T>(comparator)

@@ -1,14 +1,14 @@
 package io.emeraldpay.dshackle.config
 
 import io.emeraldpay.dshackle.FileResolver
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.yaml.snakeyaml.nodes.MappingNode
 import java.io.InputStream
 
 class SignatureConfigReader(val fileResolver: FileResolver) : YamlConfigReader(), ConfigReader<SignatureConfig> {
 
     companion object {
-        private val log = LoggerFactory.getLogger(SignatureConfig::class.java)
+        private val log = noCoLogger(SignatureConfig::class)
     }
 
     fun read(input: InputStream): SignatureConfig? {

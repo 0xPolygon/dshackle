@@ -2,13 +2,13 @@ package io.emeraldpay.dshackle.rpc
 
 import io.emeraldpay.api.proto.Common
 import io.emeraldpay.etherjar.domain.Address
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Flux
 
 class EthereumAddresses {
 
     companion object {
-        private val log = LoggerFactory.getLogger(EthereumAddresses::class.java)
+        private val log = noCoLogger(EthereumAddresses::class)
     }
 
     fun extract(addresses: Common.AnyAddress): Flux<Address> {

@@ -16,13 +16,13 @@
  */
 package io.emeraldpay.dshackle.config
 
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.yaml.snakeyaml.nodes.MappingNode
 
 class AuthConfigReader : YamlConfigReader() {
 
     companion object {
-        private val log = LoggerFactory.getLogger(AuthConfigReader::class.java)
+        private val log = noCoLogger(AuthConfigReader::class)
     }
 
     fun readClientBasicAuth(node: MappingNode?): AuthConfig.ClientBasicAuth? {

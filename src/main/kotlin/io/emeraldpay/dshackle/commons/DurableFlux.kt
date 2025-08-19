@@ -1,8 +1,8 @@
 package io.emeraldpay.dshackle.commons
 
 import io.emeraldpay.dshackle.SilentException
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
+import io.klogging.NoCoLogger
+import io.klogging.noCoLogger
 import org.springframework.util.backoff.BackOff
 import org.springframework.util.backoff.BackOffExecution
 import org.springframework.util.backoff.ExponentialBackOff
@@ -18,12 +18,12 @@ import java.util.concurrent.atomic.AtomicBoolean
 class DurableFlux<T>(
     private val provider: () -> Flux<T>,
     private val errorBackOff: BackOff,
-    private val log: Logger,
+    private val log: NoCoLogger,
     private val control: AtomicBoolean
 ) {
 
     companion object {
-        private val defaultLog = LoggerFactory.getLogger(DurableFlux::class.java)
+        private val defaultLog = noCoLogger(DurableFlux::class)
 
         @JvmStatic
         fun newBuilder(): Builder<*> {
@@ -67,7 +67,7 @@ class DurableFlux<T>(
         private var provider: (() -> Flux<T>)? = null
 
         protected var errorBackOff: BackOff = FixedBackOff(1_000, Long.MAX_VALUE)
-        protected var log: Logger = DurableFlux.defaultLog
+        protected var log: NoCoLogger = DurableFlux.defaultLog
         protected var control: AtomicBoolean = AtomicBoolean(true)
 
         @Suppress("UNCHECKED_CAST")
@@ -95,7 +95,7 @@ class DurableFlux<T>(
             return this
         }
 
-        fun logTo(log: Logger): Builder<T> {
+        fun logTo(log: NoCoLogger): Builder<T> {
             this.log = log
             return this
         }

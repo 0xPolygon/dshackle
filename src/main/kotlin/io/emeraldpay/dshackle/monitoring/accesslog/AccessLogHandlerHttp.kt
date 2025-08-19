@@ -5,7 +5,7 @@ import io.emeraldpay.api.proto.BlockchainOuterClass
 import io.emeraldpay.dshackle.config.MainConfig
 import io.emeraldpay.dshackle.monitoring.Channel
 import io.emeraldpay.dshackle.rpc.NativeCall
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import reactor.netty.http.server.HttpServerRequest
@@ -27,7 +27,7 @@ class AccessLogHandlerHttp(
 ) {
 
     companion object {
-        private val log = LoggerFactory.getLogger(AccessLogHandlerHttp::class.java)
+        private val log = noCoLogger(AccessLogHandlerHttp::class)
 
         private val NO_SUBSCRIBE = NoOnSubscriptionHandler()
         private val NO_REQUEST = NoOpHandler()

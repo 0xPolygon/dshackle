@@ -18,7 +18,7 @@ package io.emeraldpay.dshackle.monitoring.accesslog
 import io.emeraldpay.dshackle.config.MainConfig
 import io.emeraldpay.dshackle.monitoring.CurrentLogWriter
 import io.emeraldpay.dshackle.monitoring.LogJsonSerializer
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Repository
 import java.time.Duration
@@ -34,7 +34,7 @@ class CurrentAccessLogWriter(
 ) {
 
     companion object {
-        private val log = LoggerFactory.getLogger(CurrentAccessLogWriter::class.java)
+        private val log = noCoLogger(CurrentAccessLogWriter::class)
         private const val WRITE_BATCH_LIMIT = 5000
         private val FLUSH_SLEEP = Duration.ofMillis(250L)
         private val START_SLEEP = Duration.ofMillis(1000L)

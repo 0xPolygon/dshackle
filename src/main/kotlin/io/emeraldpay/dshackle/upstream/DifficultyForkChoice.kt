@@ -16,7 +16,7 @@
 package io.emeraldpay.dshackle.upstream
 
 import io.emeraldpay.dshackle.data.BlockContainer
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import java.math.BigInteger
 import java.util.concurrent.atomic.AtomicReference
 
@@ -27,7 +27,7 @@ import java.util.concurrent.atomic.AtomicReference
 class DifficultyForkChoice : ForkChoice {
 
     companion object {
-        private val log = LoggerFactory.getLogger(DifficultyForkChoice::class.java)
+        private val log = noCoLogger(DifficultyForkChoice::class)
     }
 
     private val current = AtomicReference<BigInteger>(BigInteger.ZERO)

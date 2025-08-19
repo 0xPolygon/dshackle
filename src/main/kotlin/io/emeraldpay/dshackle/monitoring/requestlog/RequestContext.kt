@@ -22,7 +22,7 @@ import io.emeraldpay.dshackle.monitoring.record.RequestRecord
 import io.emeraldpay.dshackle.upstream.rpcclient.DshackleRequest
 import io.emeraldpay.dshackle.upstream.rpcclient.JsonRpcRequest
 import org.apache.commons.lang3.StringUtils
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.util.context.Context
 import reactor.util.context.ContextView
 import java.time.Instant
@@ -34,7 +34,7 @@ import java.util.function.Function
 class RequestContext {
 
     companion object {
-        private val log = LoggerFactory.getLogger(RequestContext::class.java)
+        private val log = noCoLogger(RequestContext::class)
         private val REQUEST_CTX_KEY = "DSHACKLE/MONITORING/REQUEST"
         private val RPC_ID_KEY = "DSHACKLE/MONITORING/RPCID"
     }

@@ -20,14 +20,14 @@ import io.emeraldpay.etherjar.domain.Wei
 import io.emeraldpay.etherjar.rpc.json.BlockJson
 import io.emeraldpay.etherjar.rpc.json.TransactionJson
 import io.emeraldpay.etherjar.rpc.json.TransactionRefJson
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import java.util.function.Function
 
 class EthereumPriorityFees(upstreams: EthereumMultistream, reader: DataReaders, heightLimit: Int) :
     EthereumFees(upstreams, reader, heightLimit) {
 
     companion object {
-        private val log = LoggerFactory.getLogger(EthereumPriorityFees::class.java)
+        private val log = noCoLogger(EthereumPriorityFees::class)
     }
 
     private val toGrpc: Function<EthereumFee, BlockchainOuterClass.EstimateFeeResponse> =

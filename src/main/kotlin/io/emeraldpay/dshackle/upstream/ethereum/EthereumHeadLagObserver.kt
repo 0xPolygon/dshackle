@@ -19,7 +19,7 @@ package io.emeraldpay.dshackle.upstream.ethereum
 import io.emeraldpay.dshackle.upstream.Head
 import io.emeraldpay.dshackle.upstream.HeadLagObserver
 import io.emeraldpay.dshackle.upstream.Upstream
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 
 class EthereumHeadLagObserver(
     master: Head,
@@ -27,6 +27,6 @@ class EthereumHeadLagObserver(
 ) : HeadLagObserver(master, followers) {
 
     companion object {
-        private val log = LoggerFactory.getLogger(EthereumHeadLagObserver::class.java)
+        private val log = noCoLogger(EthereumHeadLagObserver::class)
     }
 }

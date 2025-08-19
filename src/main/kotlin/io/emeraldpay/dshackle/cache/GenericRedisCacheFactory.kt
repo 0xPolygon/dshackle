@@ -2,7 +2,7 @@ package io.emeraldpay.dshackle.cache
 
 import io.emeraldpay.api.Chain
 import io.lettuce.core.api.reactive.RedisReactiveCommands
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import java.util.concurrent.locks.ReentrantReadWriteLock
 import kotlin.concurrent.read
 import kotlin.concurrent.write
@@ -13,7 +13,7 @@ class GenericRedisCacheFactory(
 ) {
 
     companion object {
-        private val log = LoggerFactory.getLogger(GenericRedisCacheFactory::class.java)
+        private val log = noCoLogger(GenericRedisCacheFactory::class)
     }
 
     private val setupLock = ReentrantReadWriteLock()

@@ -6,7 +6,7 @@ import io.emeraldpay.dshackle.proto.CachesProto
 import io.emeraldpay.dshackle.reader.Reader
 import io.lettuce.core.api.reactive.RedisReactiveCommands
 import org.apache.commons.lang3.StringUtils
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Mono
 import java.time.Duration
 
@@ -17,7 +17,7 @@ class GenericRedisCache(
 ) : Reader<String, ByteArray> {
 
     companion object {
-        private val log = LoggerFactory.getLogger(GenericRedisCache::class.java)
+        private val log = noCoLogger(GenericRedisCache::class)
         private val DEFAULT_CACHE_TIME = Duration.ofMinutes(60)
         private val MAX_CACHE_TIME = Duration.ofHours(24)
     }

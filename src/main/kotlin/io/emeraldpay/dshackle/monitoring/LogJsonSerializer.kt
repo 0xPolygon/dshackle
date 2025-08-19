@@ -2,7 +2,7 @@ package io.emeraldpay.dshackle.monitoring
 
 import com.fasterxml.jackson.databind.util.ByteBufferBackedOutputStream
 import io.emeraldpay.dshackle.Global
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import java.nio.BufferOverflowException
 import java.nio.ByteBuffer
 
@@ -11,7 +11,7 @@ class LogJsonSerializer<T>(
 ) : LogSerializer<T> {
 
     companion object {
-        private val log = LoggerFactory.getLogger(LogJsonSerializer::class.java)
+        private val log = noCoLogger(LogJsonSerializer::class)
     }
 
     private val objectMapper = Global.objectMapper

@@ -21,7 +21,7 @@ import io.emeraldpay.dshackle.upstream.ethereum.subscribe.json.LogMessage
 import io.emeraldpay.etherjar.domain.Address
 import io.emeraldpay.etherjar.hex.Hex32
 import io.emeraldpay.etherjar.hex.HexDataComparator
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Flux
 import java.util.function.Function
 
@@ -31,7 +31,7 @@ open class ConnectLogs(
 ) {
 
     companion object {
-        private val log = LoggerFactory.getLogger(ConnectLogs::class.java)
+        private val log = noCoLogger(ConnectLogs::class)
 
         private val ADDR_COMPARATOR = HexDataComparator<Address>()
         private val TOPIC_COMPARATOR = HexDataComparator<Hex32>()

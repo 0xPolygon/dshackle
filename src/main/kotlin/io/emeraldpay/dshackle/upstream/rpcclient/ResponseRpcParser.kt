@@ -15,12 +15,12 @@
  */
 package io.emeraldpay.dshackle.upstream.rpcclient
 
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 
 open class ResponseRpcParser : ResponseParser<JsonRpcResponse>() {
 
     companion object {
-        private val log = LoggerFactory.getLogger(ResponseRpcParser::class.java)
+        private val log = noCoLogger(ResponseRpcParser::class)
     }
 
     override fun build(state: Preparsed): JsonRpcResponse {

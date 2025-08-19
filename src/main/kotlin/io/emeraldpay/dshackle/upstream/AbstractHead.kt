@@ -16,7 +16,7 @@
 package io.emeraldpay.dshackle.upstream
 
 import io.emeraldpay.dshackle.data.BlockContainer
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.Disposable
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
@@ -28,7 +28,7 @@ import java.util.concurrent.atomic.AtomicReference
 abstract class AbstractHead : Head {
 
     companion object {
-        private val log = LoggerFactory.getLogger(AbstractHead::class.java)
+        private val log = noCoLogger(AbstractHead::class)
     }
 
     private val head = AtomicReference<BlockContainer>(null)

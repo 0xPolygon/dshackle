@@ -8,7 +8,7 @@ import io.emeraldpay.dshackle.data.TxId
 import io.emeraldpay.dshackle.reader.StandardRpcReader
 import io.emeraldpay.dshackle.upstream.rpcclient.JsonRpcRequest
 import io.emeraldpay.dshackle.upstream.rpcclient.JsonRpcResponse
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Mono
 
 /**
@@ -20,7 +20,7 @@ class CacheUpdate(
 ) : StandardRpcReader {
 
     companion object {
-        private val log = LoggerFactory.getLogger(CacheUpdate::class.java)
+        private val log = noCoLogger(CacheUpdate::class)
     }
 
     override fun read(key: JsonRpcRequest): Mono<JsonRpcResponse> {

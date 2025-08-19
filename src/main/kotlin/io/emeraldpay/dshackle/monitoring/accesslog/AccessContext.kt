@@ -15,7 +15,7 @@
  */
 package io.emeraldpay.dshackle.monitoring.accesslog
 
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.util.context.ContextView
 import java.time.Instant
 import java.util.Optional
@@ -30,7 +30,7 @@ import reactor.util.context.Context as ReactorContext
 class AccessContext {
 
     companion object {
-        private val log = LoggerFactory.getLogger(AccessContext::class.java)
+        private val log = noCoLogger(AccessContext::class)
 
         val REQUEST_ID_GRPC_KEY = GrpcContext.key<Value>("DSHACKLE REQ ID")
         private val REQUEST_ID_REACTOR_KEY = "DSHACKLE/MONITORING/ACCESS_REQ_ID"

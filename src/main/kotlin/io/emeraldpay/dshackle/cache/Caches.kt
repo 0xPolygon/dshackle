@@ -28,7 +28,7 @@ import io.emeraldpay.dshackle.upstream.Head
 import io.emeraldpay.etherjar.rpc.json.BlockJson
 import io.emeraldpay.etherjar.rpc.json.TransactionJson
 import io.emeraldpay.etherjar.rpc.json.TransactionReceiptJson
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 
@@ -45,7 +45,7 @@ open class Caches(
 ) {
 
     companion object {
-        private val log = LoggerFactory.getLogger(Caches::class.java)
+        private val log = noCoLogger(Caches::class)
 
         @JvmStatic
         fun newBuilder(): Builder {

@@ -33,6 +33,11 @@ java {
     targetCompatibility = JavaVersion.VERSION_17
 }
 
+kotlin {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
 repositories {
     mavenLocal()
     mavenCentral()
@@ -43,7 +48,7 @@ repositories {
 }
 
 configurations {
-    all {
+    configureEach {
         exclude group: "commons-logging"
         exclude group: "ch.qos.logback"
         exclude group: "org.slf4j", module: "slf4j-jdk14"
@@ -130,6 +135,7 @@ dependencies {
     implementation "org.slf4j:jul-to-slf4j:$slf4jVersion"
     implementation "org.slf4j:jcl-over-slf4j:$slf4jVersion"
     implementation "org.apache.logging.log4j:log4j-slf4j2-impl:2.20.0"
+    implementation "io.klogging:klogging-jvm:0.10.1"
 
 
     testImplementation "cglib:cglib-nodep:3.3.0"
@@ -148,17 +154,6 @@ dependencies {
     testImplementation "io.mockk:mockk:1.13.3"
 
     detektPlugins "io.gitlab.arturbosch.detekt:detekt-formatting:$detektVersion"
-}
-
-compileKotlin {
-    kotlinOptions {
-        jvmTarget = "17"
-    }
-}
-compileTestKotlin {
-    kotlinOptions {
-        jvmTarget = "17"
-    }
 }
 
 test {

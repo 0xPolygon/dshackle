@@ -59,7 +59,7 @@ import io.micrometer.core.instrument.DistributionSummary
 import io.micrometer.core.instrument.Metrics
 import io.micrometer.core.instrument.Tag
 import io.micrometer.core.instrument.Timer
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Repository
 import java.net.URI
@@ -76,7 +76,7 @@ open class ConfiguredUpstreams(
     @Autowired private val cachesFactory: CachesFactory,
 ) {
 
-    private val log = LoggerFactory.getLogger(ConfiguredUpstreams::class.java)
+    private val log = noCoLogger(ConfiguredUpstreams::class)
     private var seq = AtomicInteger(0)
 
     private val forkWatchFactory = ForkWatchFactory(currentUpstreams)

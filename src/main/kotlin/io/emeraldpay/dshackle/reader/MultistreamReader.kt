@@ -9,7 +9,7 @@ import io.emeraldpay.dshackle.upstream.Selector
 import io.emeraldpay.dshackle.upstream.rpcclient.DshackleRequest
 import io.emeraldpay.dshackle.upstream.rpcclient.DshackleResponse
 import io.emeraldpay.dshackle.upstream.signature.ResponseSigner
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Mono
 
 open class MultistreamReader(
@@ -18,7 +18,7 @@ open class MultistreamReader(
 ) : DshackleRpcReader {
 
     companion object {
-        private val log = LoggerFactory.getLogger(MultistreamReader::class.java)
+        private val log = noCoLogger(MultistreamReader::class)
     }
 
     /**

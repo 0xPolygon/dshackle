@@ -16,7 +16,7 @@
 package io.emeraldpay.dshackle.upstream
 
 import org.reactivestreams.Publisher
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Flux
 import java.util.function.BiFunction
 
@@ -26,7 +26,7 @@ class MergedAvailability(
 ) {
 
     companion object {
-        private val log = LoggerFactory.getLogger(MergedAvailability::class.java)
+        private val log = noCoLogger(MergedAvailability::class)
     }
 
     fun produce(): Flux<UpstreamAvailability> {

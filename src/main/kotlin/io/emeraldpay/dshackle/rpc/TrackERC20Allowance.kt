@@ -11,7 +11,7 @@ import io.emeraldpay.dshackle.upstream.MultistreamHolder
 import io.emeraldpay.dshackle.upstream.Selector
 import io.emeraldpay.dshackle.upstream.ethereum.EthereumMultistream
 import io.emeraldpay.dshackle.upstream.grpc.EthereumGrpcUpstream
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Flux
@@ -23,7 +23,7 @@ class TrackERC20Allowance(
 ) {
 
     companion object {
-        private val log = LoggerFactory.getLogger(TrackERC20Allowance::class.java)
+        private val log = noCoLogger(TrackERC20Allowance::class)
     }
 
     private val allowanceUpstreamMatcher = Selector.LocalAndMatcher(

@@ -27,7 +27,7 @@ import io.grpc.Metadata
 import io.netty.handler.codec.http.HttpHeaders
 import org.apache.commons.codec.binary.Hex
 import org.apache.commons.lang3.StringUtils
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.netty.http.server.HttpServerRequest
 import reactor.netty.http.websocket.WebsocketInbound
 import java.net.InetAddress
@@ -39,7 +39,7 @@ import java.util.UUID
 class RecordBuilder {
 
     companion object {
-        private val log = LoggerFactory.getLogger(RecordBuilder::class.java)
+        private val log = noCoLogger(RecordBuilder::class)
 
         // A reference to the config for the current _running instance_.
         // Initialized by AccessLogWriter

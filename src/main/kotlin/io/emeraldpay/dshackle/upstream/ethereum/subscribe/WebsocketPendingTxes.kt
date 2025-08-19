@@ -19,7 +19,7 @@ import io.emeraldpay.dshackle.upstream.SubscriptionConnect
 import io.emeraldpay.dshackle.upstream.ethereum.EthereumEgressSubscription
 import io.emeraldpay.dshackle.upstream.ethereum.WsSubscriptions
 import io.emeraldpay.etherjar.domain.TransactionId
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 import java.time.Duration
@@ -29,7 +29,7 @@ class WebsocketPendingTxes(
 ) : DefaultPendingTxesSource(), SubscriptionConnect<TransactionId> {
 
     companion object {
-        private val log = LoggerFactory.getLogger(WebsocketPendingTxes::class.java)
+        private val log = noCoLogger(WebsocketPendingTxes::class)
     }
 
     override fun createConnection(): Flux<TransactionId> {

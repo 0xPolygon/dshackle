@@ -2,7 +2,7 @@ package io.emeraldpay.dshackle.test
 
 import io.emeraldpay.dshackle.data.BlockContainer
 import io.emeraldpay.dshackle.upstream.Head
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 
@@ -12,7 +12,7 @@ class FixedHead(
 ) : Head {
 
     companion object {
-        private val log = LoggerFactory.getLogger(FixedHead::class.java)
+        private val log = noCoLogger(FixedHead::class)
     }
 
     override fun getFlux(): Flux<BlockContainer> {

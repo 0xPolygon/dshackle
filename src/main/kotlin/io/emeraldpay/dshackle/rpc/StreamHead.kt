@@ -22,7 +22,7 @@ import io.emeraldpay.api.proto.BlockchainOuterClass
 import io.emeraldpay.api.proto.Common
 import io.emeraldpay.dshackle.data.BlockContainer
 import io.emeraldpay.dshackle.upstream.MultistreamHolder
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Flux
@@ -33,7 +33,7 @@ class StreamHead(
     @Autowired private val multistreamHolder: MultistreamHolder
 ) {
 
-    private val log = LoggerFactory.getLogger(StreamHead::class.java)
+    private val log = noCoLogger(StreamHead::class)
 
     fun add(requestMono: Mono<Common.Chain>): Flux<BlockchainOuterClass.ChainHead> {
         return requestMono.map { request ->

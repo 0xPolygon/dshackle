@@ -21,14 +21,14 @@ import io.emeraldpay.dshackle.data.BlockContainer
 import io.emeraldpay.dshackle.data.BlockId
 import io.emeraldpay.dshackle.data.TxId
 import org.apache.commons.codec.binary.Hex
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import java.math.BigInteger
 import java.time.Instant
 
 class ExtractBlock {
 
     companion object {
-        private val log = LoggerFactory.getLogger(ExtractBlock::class.java)
+        private val log = noCoLogger(ExtractBlock::class)
 
         @JvmStatic
         fun getHeight(data: Map<String, Any>): Long? {

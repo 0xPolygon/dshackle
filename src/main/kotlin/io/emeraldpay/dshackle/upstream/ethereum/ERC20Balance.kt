@@ -23,7 +23,7 @@ import io.emeraldpay.dshackle.upstream.rpcclient.JsonRpcResponse
 import io.emeraldpay.etherjar.domain.Address
 import io.emeraldpay.etherjar.erc20.ERC20Token
 import io.emeraldpay.etherjar.hex.HexQuantity
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 import java.math.BigInteger
@@ -34,7 +34,7 @@ import java.math.BigInteger
 open class ERC20Balance {
 
     companion object {
-        private val log = LoggerFactory.getLogger(ERC20Balance::class.java)
+        private val log = noCoLogger(ERC20Balance::class)
     }
 
     open fun getBalance(upstreams: EthereumMultistream, token: ERC20Token, address: Address): Mono<BigInteger> {

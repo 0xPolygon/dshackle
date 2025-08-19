@@ -5,12 +5,12 @@ import io.emeraldpay.api.proto.ReactorBlockchainGrpc
 import io.grpc.inprocess.InProcessChannelBuilder
 import io.grpc.inprocess.InProcessServerBuilder
 import io.grpc.testing.GrpcCleanupRule
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 
 class MockGrpcServer {
 
     companion object {
-        private val log = LoggerFactory.getLogger(MockGrpcServer::class.java)
+        private val log = noCoLogger(MockGrpcServer::class)
     }
 
     val grpcCleanup = GrpcCleanupRule()

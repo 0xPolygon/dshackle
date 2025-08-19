@@ -20,7 +20,7 @@ import io.emeraldpay.dshackle.data.BlockContainer
 import io.emeraldpay.dshackle.data.BlockId
 import io.emeraldpay.dshackle.reader.Reader
 import io.lettuce.core.api.reactive.RedisReactiveCommands
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Mono
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
@@ -37,7 +37,7 @@ class HeightByHashRedisCache(
 ) : Reader<BlockId, Long>, HeightByHashCache {
 
     companion object {
-        private val log = LoggerFactory.getLogger(HeightByHashRedisCache::class.java)
+        private val log = noCoLogger(HeightByHashRedisCache::class)
 
         private const val MAX_CACHE_TIME_MINUTES = 60L * 4
     }

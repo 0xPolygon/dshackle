@@ -17,13 +17,13 @@ package io.emeraldpay.dshackle.upstream.rpcclient
 
 import com.fasterxml.jackson.core.JsonParser
 import com.fasterxml.jackson.core.JsonToken
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import java.io.IOException
 
 class ResponseWSParser : ResponseParser<ResponseWSParser.WsResponse>() {
 
     companion object {
-        private val log = LoggerFactory.getLogger(ResponseWSParser::class.java)
+        private val log = noCoLogger(ResponseWSParser::class)
         private val NULL_RESULT = "null".toByteArray()
     }
 

@@ -20,14 +20,14 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder
 import io.emeraldpay.api.Chain
 import io.emeraldpay.dshackle.monitoring.Channel
 import io.emeraldpay.dshackle.monitoring.requestlog.RequestType
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import java.time.Instant
 import java.util.UUID
 
 class RequestRecord {
 
     companion object {
-        private val log = LoggerFactory.getLogger(RequestRecord::class.java)
+        private val log = noCoLogger(RequestRecord::class)
 
         fun newBuilder(): Builder {
             return Builder()

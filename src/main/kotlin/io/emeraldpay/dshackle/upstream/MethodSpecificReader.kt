@@ -3,14 +3,14 @@ package io.emeraldpay.dshackle.upstream
 import io.emeraldpay.dshackle.reader.DshackleRpcReader
 import io.emeraldpay.dshackle.upstream.rpcclient.DshackleRequest
 import io.emeraldpay.dshackle.upstream.rpcclient.DshackleResponse
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Mono
 import java.util.function.Predicate
 
 open class MethodSpecificReader : DshackleRpcReader {
 
     companion object {
-        private val log = LoggerFactory.getLogger(MethodSpecificReader::class.java)
+        private val log = noCoLogger(MethodSpecificReader::class)
     }
 
     private val specific = mutableMapOf<String, MutableList<Delegate>>()

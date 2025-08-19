@@ -18,7 +18,7 @@ package io.emeraldpay.dshackle.upstream
 import io.emeraldpay.dshackle.data.BlockContainer
 import io.emeraldpay.dshackle.data.BlockId
 import org.reactivestreams.Publisher
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Flux
 import reactor.core.scheduler.Schedulers
 import java.util.LinkedList
@@ -34,7 +34,7 @@ import kotlin.concurrent.write
 class PriorityForkChoice : ForkChoice {
 
     companion object {
-        private val log = LoggerFactory.getLogger(PriorityForkChoice::class.java)
+        private val log = noCoLogger(PriorityForkChoice::class)
     }
 
     /**

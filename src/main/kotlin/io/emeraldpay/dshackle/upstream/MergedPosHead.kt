@@ -3,7 +3,7 @@ package io.emeraldpay.dshackle.upstream
 import io.emeraldpay.dshackle.cache.Caches
 import io.emeraldpay.dshackle.cache.CachesEnabled
 import io.emeraldpay.dshackle.data.BlockContainer
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.context.Lifecycle
 import reactor.core.Disposable
 import reactor.core.publisher.Flux
@@ -17,7 +17,7 @@ class MergedPosHead(
 ) : AbstractHead(), Lifecycle, CachesEnabled {
 
     companion object {
-        private val log = LoggerFactory.getLogger(MergedPosHead::class.java)
+        private val log = noCoLogger(MergedPosHead::class)
     }
     private var subscription: Disposable? = null
 

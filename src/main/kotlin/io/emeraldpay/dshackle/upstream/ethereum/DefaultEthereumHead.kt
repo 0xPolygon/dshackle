@@ -26,7 +26,7 @@ import io.emeraldpay.dshackle.upstream.AbstractHead
 import io.emeraldpay.dshackle.upstream.Head
 import io.emeraldpay.dshackle.upstream.rpcclient.JsonRpcRequest
 import io.emeraldpay.etherjar.hex.HexQuantity
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Mono
 import java.util.function.Function
 
@@ -35,7 +35,7 @@ open class DefaultEthereumHead(
 ) : Head, AbstractHead() {
 
     companion object {
-        private val log = LoggerFactory.getLogger(DefaultEthereumHead::class.java)
+        private val log = noCoLogger(DefaultEthereumHead::class)
     }
 
     fun getLatestBlock(api: StandardRpcReader): Mono<BlockContainer> {

@@ -5,13 +5,13 @@ import io.emeraldpay.dshackle.Global
 import io.emeraldpay.dshackle.data.BlockId
 import io.emeraldpay.dshackle.data.TxContainer
 import io.emeraldpay.dshackle.data.TxId
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import java.time.Instant
 
 class ExtractTx {
 
     companion object {
-        private val log = LoggerFactory.getLogger(ExtractTx::class.java)
+        private val log = noCoLogger(ExtractTx::class)
 
         @JvmStatic
         fun getTime(data: Map<String, Any>): Instant? {

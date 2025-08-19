@@ -3,7 +3,7 @@ package io.emeraldpay.dshackle.upstream.bitcoin
 import io.emeraldpay.dshackle.reader.DshackleRpcReader
 import io.emeraldpay.dshackle.upstream.rpcclient.DshackleRequest
 import io.emeraldpay.dshackle.upstream.rpcclient.DshackleResponse
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Mono
 
 class NormalizingReader(
@@ -11,7 +11,7 @@ class NormalizingReader(
 ) : DshackleRpcReader {
 
     companion object {
-        private val log = LoggerFactory.getLogger(NormalizingReader::class.java)
+        private val log = noCoLogger(NormalizingReader::class)
     }
 
     override fun read(key: DshackleRequest): Mono<DshackleResponse> {

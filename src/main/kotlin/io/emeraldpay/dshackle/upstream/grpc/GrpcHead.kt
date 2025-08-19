@@ -27,7 +27,7 @@ import io.emeraldpay.dshackle.upstream.AbstractHead
 import io.emeraldpay.dshackle.upstream.DefaultUpstream
 import io.emeraldpay.dshackle.upstream.UpstreamAvailability
 import org.reactivestreams.Publisher
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.context.Lifecycle
 import org.springframework.util.backoff.ExponentialBackOff
 import reactor.core.Disposable
@@ -52,7 +52,7 @@ class GrpcHead(
 ) : AbstractHead(), Lifecycle {
 
     companion object {
-        private val log = LoggerFactory.getLogger(GrpcHead::class.java)
+        private val log = noCoLogger(GrpcHead::class)
     }
 
     private var headSubscription: Disposable? = null

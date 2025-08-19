@@ -23,7 +23,7 @@ import io.emeraldpay.dshackle.proto.CachesProto
 import io.emeraldpay.dshackle.reader.Reader
 import io.emeraldpay.dshackle.upstream.Head
 import io.lettuce.core.api.reactive.RedisReactiveCommands
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Mono
 import java.time.Instant
 import java.util.concurrent.TimeUnit
@@ -36,7 +36,7 @@ abstract class OnTxRedisCache<T>(
 ) : Reader<TxId, T> {
 
     companion object {
-        private val log = LoggerFactory.getLogger(OnTxRedisCache::class.java)
+        private val log = noCoLogger(OnTxRedisCache::class)
 
         // max caching time is 24 hours
         const val MAX_CACHE_TIME_HOURS = 24L

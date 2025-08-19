@@ -22,7 +22,7 @@ import io.emeraldpay.dshackle.upstream.IngressSubscription
 import io.emeraldpay.dshackle.upstream.SubscriptionConnect
 import io.emeraldpay.dshackle.upstream.ethereum.EthereumEgressSubscription
 import io.emeraldpay.dshackle.upstream.ethereum.EthereumIngressSubscription
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 
 class EthereumDshackleIngressSubscription(
     private val blockchain: Chain,
@@ -30,7 +30,7 @@ class EthereumDshackleIngressSubscription(
 ) : IngressSubscription, EthereumIngressSubscription {
 
     companion object {
-        private val log = LoggerFactory.getLogger(EthereumDshackleIngressSubscription::class.java)
+        private val log = noCoLogger(EthereumDshackleIngressSubscription::class)
     }
 
     private val pendingTxes = DshacklePendingTxesSource(blockchain, conn)

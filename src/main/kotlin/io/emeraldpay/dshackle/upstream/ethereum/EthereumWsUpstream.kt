@@ -26,7 +26,7 @@ import io.emeraldpay.dshackle.upstream.UpstreamAvailability
 import io.emeraldpay.dshackle.upstream.calls.CallMethods
 import io.emeraldpay.dshackle.upstream.ethereum.subscribe.EthereumWsIngressSubscription
 import io.emeraldpay.dshackle.upstream.rpcclient.WithHttpStatus
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.context.Lifecycle
 import reactor.core.Disposable
 
@@ -43,7 +43,7 @@ class EthereumWsUpstream(
 ) : EthereumUpstream(id, chain, forkWatch, options, role, targets, node), Upstream, Lifecycle {
 
     companion object {
-        private val log = LoggerFactory.getLogger(EthereumWsUpstream::class.java)
+        private val log = noCoLogger(EthereumWsUpstream::class)
     }
 
     private val head: EthereumWsHead

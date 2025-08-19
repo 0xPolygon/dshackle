@@ -14,7 +14,7 @@ import io.emeraldpay.dshackle.upstream.UpstreamAvailability
 import io.emeraldpay.dshackle.upstream.calls.CallMethods
 import io.emeraldpay.dshackle.upstream.calls.DirectCallMethods
 import io.emeraldpay.dshackle.upstream.rpcclient.WithHttpStatus
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.context.Lifecycle
 import reactor.core.Disposable
 import java.time.Duration
@@ -47,7 +47,7 @@ open class EthereumRpcUpstream(
     constructor(id: String, chain: Chain, api: StandardRpcReader) :
         this(id, chain, ForkWatch.Never(), api)
 
-    private val log = LoggerFactory.getLogger(EthereumRpcUpstream::class.java)
+    private val log = noCoLogger(EthereumRpcUpstream::class)
 
     private val head: Head = this.createHead()
     private var validatorSubscription: Disposable? = null

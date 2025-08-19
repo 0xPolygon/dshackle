@@ -23,7 +23,7 @@ import io.grpc.CompressorRegistry
 import io.grpc.DecompressorRegistry
 import io.grpc.Server
 import io.grpc.netty.NettyServerBuilder
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.net.InetSocketAddress
@@ -38,7 +38,7 @@ open class GrpcServer(
     @Autowired val accessHandler: AccessLogHandlerGrpc
 ) {
 
-    private val log = LoggerFactory.getLogger(GrpcServer::class.java)
+    private val log = noCoLogger(GrpcServer::class)
 
     private var server: Server? = null
 

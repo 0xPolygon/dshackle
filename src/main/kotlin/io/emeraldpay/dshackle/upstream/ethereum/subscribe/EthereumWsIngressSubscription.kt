@@ -20,14 +20,14 @@ import io.emeraldpay.dshackle.upstream.SubscriptionConnect
 import io.emeraldpay.dshackle.upstream.ethereum.EthereumEgressSubscription
 import io.emeraldpay.dshackle.upstream.ethereum.EthereumIngressSubscription
 import io.emeraldpay.dshackle.upstream.ethereum.WsSubscriptions
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 
 class EthereumWsIngressSubscription(
     private val conn: WsSubscriptions
 ) : IngressSubscription, EthereumIngressSubscription {
 
     companion object {
-        private val log = LoggerFactory.getLogger(EthereumWsIngressSubscription::class.java)
+        private val log = noCoLogger(EthereumWsIngressSubscription::class)
     }
 
     private val pendingTxes = WebsocketPendingTxes(conn)

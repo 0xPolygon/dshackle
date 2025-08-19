@@ -1,13 +1,13 @@
 package io.emeraldpay.dshackle.test
 
 import io.emeraldpay.dshackle.reader.Reader
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Mono
 
 class ReaderMock<K, D> : Reader<K, D> {
 
     companion object {
-        private val log = LoggerFactory.getLogger(ReaderMock::class.java)
+        private val log = noCoLogger(ReaderMock::class)
     }
 
     private val mapping = mutableMapOf<K, D>()

@@ -43,7 +43,7 @@ import io.emeraldpay.dshackle.upstream.rpcclient.JsonRpcResponse
 import io.emeraldpay.etherjar.domain.BlockHash
 import io.emeraldpay.etherjar.rpc.RpcException
 import org.reactivestreams.Publisher
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.context.Lifecycle
 import reactor.core.publisher.Mono
 import java.math.BigInteger
@@ -106,7 +106,7 @@ open class EthereumGrpcUpstream(
             }
     }
 
-    private val log = LoggerFactory.getLogger(EthereumGrpcUpstream::class.java)
+    private val log = noCoLogger(EthereumGrpcUpstream::class)
     private val upstreamStatus = GrpcUpstreamStatus()
     private val grpcHead = OptionalHead(
         GrpcHead(chain, this, remote, blockConverter, reloadBlock)

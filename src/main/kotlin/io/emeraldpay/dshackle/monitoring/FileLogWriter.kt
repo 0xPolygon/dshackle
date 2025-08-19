@@ -16,7 +16,7 @@
 package io.emeraldpay.dshackle.monitoring
 
 import io.emeraldpay.dshackle.commons.RateLimitedAction
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import java.nio.channels.FileChannel
 import java.nio.file.Path
 import java.nio.file.StandardOpenOption
@@ -35,7 +35,7 @@ class FileLogWriter<T>(
 ) : LogWriter<T>, BufferingLogWriter<T>(serializer, LogEncodingNewLine(), queueLimit = batchLimit, metrics = metrics) {
 
     companion object {
-        private val log = LoggerFactory.getLogger(FileLogWriter::class.java)
+        private val log = noCoLogger(FileLogWriter::class)
     }
     private val scheduler = Executors.newSingleThreadScheduledExecutor()
     private var started: Boolean = false

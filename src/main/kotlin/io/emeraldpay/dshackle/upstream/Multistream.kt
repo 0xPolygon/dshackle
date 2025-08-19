@@ -24,7 +24,7 @@ import io.emeraldpay.dshackle.upstream.calls.CallMethods
 import io.emeraldpay.dshackle.upstream.calls.NoCallMethods
 import io.micrometer.core.instrument.Metrics
 import io.micrometer.core.instrument.Tag
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.context.Lifecycle
 import reactor.core.Disposable
 import reactor.core.publisher.Flux
@@ -47,7 +47,7 @@ abstract class Multistream(
 ) : DshackleRpcReader, Lifecycle, HasEgressSubscription {
 
     companion object {
-        private val log = LoggerFactory.getLogger(Multistream::class.java)
+        private val log = noCoLogger(Multistream::class)
         private const val metrics = "upstreams"
     }
 

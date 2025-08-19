@@ -23,7 +23,7 @@ import io.emeraldpay.dshackle.monitoring.LogJsonSerializer
 import io.emeraldpay.dshackle.monitoring.record.RequestRecord
 import io.emeraldpay.dshackle.reader.StandardRpcReader
 import io.emeraldpay.dshackle.upstream.rpcclient.LoggingJsonRpcReader
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Repository
 import java.time.Duration
@@ -39,7 +39,7 @@ open class CurrentRequestLogWriter(
 ) {
 
     companion object {
-        private val log = LoggerFactory.getLogger(CurrentRequestLogWriter::class.java)
+        private val log = noCoLogger(CurrentRequestLogWriter::class)
 
         private const val WRITE_BATCH_LIMIT = 5000
         private val FLUSH_SLEEP = Duration.ofMillis(250L)

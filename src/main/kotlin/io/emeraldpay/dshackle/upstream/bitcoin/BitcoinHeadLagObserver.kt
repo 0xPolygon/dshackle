@@ -18,7 +18,7 @@ package io.emeraldpay.dshackle.upstream.bitcoin
 import io.emeraldpay.dshackle.upstream.Head
 import io.emeraldpay.dshackle.upstream.HeadLagObserver
 import io.emeraldpay.dshackle.upstream.Upstream
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 
 class BitcoinHeadLagObserver(
     master: Head,
@@ -26,6 +26,6 @@ class BitcoinHeadLagObserver(
 ) : HeadLagObserver(master, followers) {
 
     companion object {
-        private val log = LoggerFactory.getLogger(BitcoinHeadLagObserver::class.java)
+        private val log = noCoLogger(BitcoinHeadLagObserver::class)
     }
 }

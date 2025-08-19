@@ -9,7 +9,7 @@ import io.emeraldpay.dshackle.upstream.MethodSpecificReader
 import io.emeraldpay.dshackle.upstream.rpcclient.DshackleRequest
 import io.emeraldpay.dshackle.upstream.rpcclient.DshackleResponse
 import io.emeraldpay.etherjar.hex.HexQuantity
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Mono
 import java.util.concurrent.atomic.AtomicReference
 
@@ -20,7 +20,7 @@ class NormalizingReader(
 ) : MethodSpecificReader(), DshackleRpcReader {
 
     companion object {
-        private val log = LoggerFactory.getLogger(NormalizingReader::class.java)
+        private val log = noCoLogger(NormalizingReader::class)
 
         private val HEX_REGEX = Regex("^0x[0-9a-fA-F]+$")
     }
@@ -155,16 +155,19 @@ class NormalizingReader(
             val number: Long
             try {
                 val blockRef = key.params[0].toString()
-                when {
-                    blockRef == "latest" -> {
-                        number = head.get().getCurrentHeight() ?: return Mono.empty()
+                number = when (blockRef) {
+                    "latest" -> {
+                        head.get().getCurrentHeight() ?: return Mono.empty()
                     }
-                    blockRef == "earliest" -> {
-                        number = 0
+
+                    "earliest" -> {
+                        0
                     }
-                    blockRef == "pending" -> {
+
+                    "pending" -> {
                         return Mono.empty()
                     }
+
                     else -> {
                         return Mono.empty()
                     }

@@ -6,7 +6,7 @@ import io.emeraldpay.dshackle.upstream.ChainFees
 import io.emeraldpay.dshackle.upstream.MultistreamHolder
 import io.grpc.Status
 import io.grpc.StatusException
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Mono
@@ -17,7 +17,7 @@ class EstimateFee(
 ) {
 
     companion object {
-        private val log = LoggerFactory.getLogger(EstimateFee::class.java)
+        private val log = noCoLogger(EstimateFee::class)
     }
 
     fun estimateFee(req: BlockchainOuterClass.EstimateFeeRequest): Mono<BlockchainOuterClass.EstimateFeeResponse> {

@@ -3,7 +3,7 @@ package io.emeraldpay.dshackle.upstream.bitcoin
 import io.emeraldpay.dshackle.upstream.Capability
 import io.emeraldpay.dshackle.upstream.bitcoin.data.SimpleUnspent
 import org.bitcoinj.core.Address
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Mono
 
 class CurrentUnspentReader(
@@ -12,7 +12,7 @@ class CurrentUnspentReader(
 ) : UnspentReader {
 
     companion object {
-        private val log = LoggerFactory.getLogger(CurrentUnspentReader::class.java)
+        private val log = noCoLogger(CurrentUnspentReader::class)
     }
 
     private val delegate: UnspentReader = if (esploraClient != null) {

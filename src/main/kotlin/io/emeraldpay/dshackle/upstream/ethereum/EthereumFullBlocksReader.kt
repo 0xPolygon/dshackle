@@ -20,7 +20,7 @@ import io.emeraldpay.dshackle.data.BlockId
 import io.emeraldpay.dshackle.data.TxContainer
 import io.emeraldpay.dshackle.data.TxId
 import io.emeraldpay.dshackle.reader.Reader
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 import reactor.util.function.Tuple2
@@ -42,7 +42,7 @@ class EthereumFullBlocksReader(
 ) {
 
     companion object {
-        private val log = LoggerFactory.getLogger(EthereumFullBlocksReader::class.java)
+        private val log = noCoLogger(EthereumFullBlocksReader::class)
     }
 
     enum class Mode {
@@ -138,7 +138,7 @@ class EthereumFullBlocksReader(
             val arrayStart = s.indexOf("[", fieldStart)
             val arrayEnd = s.indexOf("]", arrayStart)
 
-            val head = s.substring(0, arrayStart + 1)
+            val head = s.take(arrayStart + 1)
             val tail = s.substring(arrayEnd, s.length)
 
             return Tuples.of(head.toByteArray(), tail.toByteArray())

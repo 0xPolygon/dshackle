@@ -19,14 +19,14 @@ import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonPropertyOrder
 import io.emeraldpay.api.Chain
 import io.emeraldpay.dshackle.monitoring.Channel
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import java.time.Instant
 import java.util.UUID
 
 class AccessRecord {
 
     companion object {
-        private val log = LoggerFactory.getLogger(AccessRecord::class.java)
+        private val log = noCoLogger(AccessRecord::class)
     }
 
     @JsonPropertyOrder("version", "id", "channel", "ts", "method")

@@ -15,7 +15,7 @@
  */
 package io.emeraldpay.dshackle.monitoring
 
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import java.nio.ByteBuffer
 
 /**
@@ -25,7 +25,7 @@ import java.nio.ByteBuffer
 class LogEncodingPrefix : LogEncoding {
 
     companion object {
-        private val log = LoggerFactory.getLogger(LogEncodingPrefix::class.java)
+        private val log = noCoLogger(LogEncodingPrefix::class)
 
         private const val PREFIX_LENGTH = 4
     }

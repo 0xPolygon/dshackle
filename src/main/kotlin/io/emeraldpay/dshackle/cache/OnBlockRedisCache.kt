@@ -23,7 +23,7 @@ import io.emeraldpay.dshackle.proto.CachesProto
 import io.emeraldpay.dshackle.proto.CachesProto.ValueContainer
 import io.emeraldpay.dshackle.reader.Reader
 import io.lettuce.core.api.reactive.RedisReactiveCommands
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Mono
 import java.time.Instant
 import java.util.concurrent.TimeUnit
@@ -36,7 +36,7 @@ abstract class OnBlockRedisCache<T>(
 ) : Reader<BlockId, T> {
 
     companion object {
-        private val log = LoggerFactory.getLogger(OnBlockRedisCache::class.java)
+        private val log = noCoLogger(OnBlockRedisCache::class)
 
         private const val MAX_CACHE_TIME_MINUTES = 60L
 

@@ -18,7 +18,7 @@ package io.emeraldpay.dshackle.upstream.ethereum.subscribe
 import io.emeraldpay.dshackle.commons.ExpiringSet
 import io.emeraldpay.etherjar.domain.TransactionId
 import io.emeraldpay.etherjar.hex.HexDataComparator
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Flux
 import java.time.Duration
 
@@ -27,7 +27,7 @@ class AggregatedPendingTxes(
 ) : PendingTxesSource {
 
     companion object {
-        private val log = LoggerFactory.getLogger(AggregatedPendingTxes::class.java)
+        private val log = noCoLogger(AggregatedPendingTxes::class)
     }
 
     private val track = ExpiringSet<TransactionId>(

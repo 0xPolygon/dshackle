@@ -48,7 +48,7 @@ import io.netty.handler.ssl.SslContext
 import io.netty.handler.ssl.SslContextBuilder
 import org.apache.commons.lang3.StringUtils
 import org.apache.commons.lang3.exception.ExceptionUtils
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.util.backoff.ExponentialBackOff
 import reactor.core.Disposable
 import reactor.core.publisher.Flux
@@ -68,7 +68,7 @@ class GrpcUpstreams(
     private val fileResolver: FileResolver,
     private val currentRequestLogWriter: CurrentRequestLogWriter,
 ) {
-    private val log = LoggerFactory.getLogger(GrpcUpstreams::class.java)
+    private val log = noCoLogger(GrpcUpstreams::class)
 
     var options = UpstreamsConfig.PartialOptions.getDefaults().build()
 

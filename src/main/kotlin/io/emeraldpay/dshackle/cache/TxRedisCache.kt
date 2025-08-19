@@ -24,7 +24,7 @@ import io.emeraldpay.dshackle.data.TxId
 import io.emeraldpay.dshackle.proto.CachesProto
 import io.emeraldpay.dshackle.reader.Reader
 import io.lettuce.core.api.reactive.RedisReactiveCommands
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Mono
 
 /**
@@ -37,7 +37,7 @@ open class TxRedisCache(
     OnTxRedisCache<TxContainer>(redis, chain, CachesProto.ValueContainer.ValueType.TX) {
 
     companion object {
-        private val log = LoggerFactory.getLogger(TxRedisCache::class.java)
+        private val log = noCoLogger(TxRedisCache::class)
     }
 
     override fun buildMeta(id: TxId, value: TxContainer): CachesProto.TxMeta.Builder {

@@ -16,12 +16,12 @@
  */
 package io.emeraldpay.dshackle.config
 
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 
 class AuthConfig {
 
     companion object {
-        private val log = LoggerFactory.getLogger(AuthConfig::class.java)
+        private val log = noCoLogger(AuthConfig::class)
     }
 
     open class ClientAuth {

@@ -17,7 +17,7 @@ package io.emeraldpay.dshackle.monitoring
 
 import io.emeraldpay.dshackle.Global
 import io.emeraldpay.dshackle.config.LogTargetConfig
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import java.nio.file.Path
 import java.time.Duration
 import java.util.Locale
@@ -29,7 +29,7 @@ abstract class CurrentLogWriter<T>(
 ) {
 
     companion object {
-        private val log = LoggerFactory.getLogger(CurrentLogWriter::class.java)
+        private val log = noCoLogger(CurrentLogWriter::class)
     }
 
     var logWriter: LogWriter<T> = NoLogWriter<T>()

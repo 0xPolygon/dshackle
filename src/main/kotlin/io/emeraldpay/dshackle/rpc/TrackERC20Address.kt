@@ -27,7 +27,7 @@ import io.emeraldpay.dshackle.upstream.ethereum.EthereumMultistream
 import io.emeraldpay.etherjar.domain.Address
 import io.emeraldpay.etherjar.domain.EventId
 import io.emeraldpay.etherjar.erc20.ERC20Token
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Flux
@@ -43,7 +43,7 @@ class TrackERC20Address(
 ) : TrackAddress {
 
     companion object {
-        private val log = LoggerFactory.getLogger(TrackERC20Address::class.java)
+        private val log = noCoLogger(TrackERC20Address::class)
     }
 
     var erc20Balance: ERC20Balance = ERC20Balance()

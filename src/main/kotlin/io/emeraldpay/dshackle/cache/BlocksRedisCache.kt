@@ -23,7 +23,7 @@ import io.emeraldpay.dshackle.data.TxId
 import io.emeraldpay.dshackle.proto.CachesProto
 import io.emeraldpay.dshackle.reader.Reader
 import io.lettuce.core.api.reactive.RedisReactiveCommands
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Mono
 import java.math.BigInteger
 import java.time.Instant
@@ -38,7 +38,7 @@ class BlocksRedisCache(
     OnBlockRedisCache<BlockContainer>(redis, chain, CachesProto.ValueContainer.ValueType.BLOCK) {
 
     companion object {
-        private val log = LoggerFactory.getLogger(BlocksRedisCache::class.java)
+        private val log = noCoLogger(BlocksRedisCache::class)
     }
 
     override fun buildMeta(block: BlockContainer): CachesProto.BlockMeta.Builder {

@@ -25,7 +25,7 @@ import io.emeraldpay.dshackle.config.SignatureConfig
 import io.emeraldpay.dshackle.config.TokensConfig
 import io.emeraldpay.dshackle.config.UpstreamsConfig
 import org.bouncycastle.jce.provider.BouncyCastleProvider
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.boot.ExitCodeGenerator
@@ -49,12 +49,12 @@ import kotlin.system.exitProcess
 @EnableScheduling
 @EnableAsync
 open class Config(
-    @Autowired private val env: Environment,
-    @Autowired private val ctx: ApplicationContext
+    @param:Autowired private val env: Environment,
+    @param:Autowired private val ctx: ApplicationContext
 ) {
 
     companion object {
-        private val log = LoggerFactory.getLogger(Config::class.java)
+        private val log = noCoLogger(Config::class)
 
         private const val DEFAULT_CONFIG = "/etc/dshackle/dshackle.yaml"
         private const val LOCAL_CONFIG = "./dshackle.yaml"

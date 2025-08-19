@@ -19,7 +19,7 @@ import io.emeraldpay.api.proto.BlockchainOuterClass
 import io.emeraldpay.dshackle.data.TxId
 import io.emeraldpay.dshackle.upstream.AbstractChainFees
 import io.emeraldpay.dshackle.upstream.ChainFees
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 import java.math.BigDecimal
@@ -32,7 +32,7 @@ class BitcoinFees(
 ) : AbstractChainFees<BitcoinFees.TxFee, Map<String, Any>, TxId, String>(heightLimit, upstreams, extractTx), ChainFees {
 
     companion object {
-        private val log = LoggerFactory.getLogger(BitcoinFees::class.java)
+        private val log = noCoLogger(BitcoinFees::class)
 
         private val extractTx = { block: Map<String, Any> ->
             block["tx"]

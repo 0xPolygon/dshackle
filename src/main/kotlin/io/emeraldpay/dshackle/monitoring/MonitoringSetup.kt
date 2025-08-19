@@ -28,7 +28,7 @@ import io.micrometer.core.instrument.binder.system.ProcessorMetrics
 import io.micrometer.core.instrument.config.MeterFilter
 import io.micrometer.prometheus.PrometheusConfig
 import io.micrometer.prometheus.PrometheusMeterRegistry
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.io.IOException
@@ -42,7 +42,7 @@ class MonitoringSetup(
 ) {
 
     companion object {
-        private val log = LoggerFactory.getLogger(MonitoringSetup::class.java)
+        private val log = noCoLogger(MonitoringSetup::class)
     }
 
     @PostConstruct

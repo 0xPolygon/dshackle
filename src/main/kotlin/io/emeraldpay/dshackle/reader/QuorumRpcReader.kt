@@ -24,7 +24,7 @@ import io.emeraldpay.dshackle.upstream.rpcclient.JsonRpcRequest
 import io.emeraldpay.dshackle.upstream.rpcclient.JsonRpcResponse
 import io.emeraldpay.dshackle.upstream.signature.ResponseSigner
 import io.emeraldpay.etherjar.rpc.RpcException
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 import reactor.util.function.Tuple2
@@ -44,7 +44,7 @@ class QuorumRpcReader(
 ) : Reader<JsonRpcRequest, QuorumRpcReader.Result> {
 
     companion object {
-        private val log = LoggerFactory.getLogger(QuorumRpcReader::class.java)
+        private val log = noCoLogger(QuorumRpcReader::class)
     }
 
     constructor(apiControl: ApiSource, quorum: CallQuorum) : this(apiControl, quorum, null)

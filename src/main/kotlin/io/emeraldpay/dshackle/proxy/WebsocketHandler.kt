@@ -27,7 +27,7 @@ import io.emeraldpay.etherjar.rpc.RequestJson
 import io.emeraldpay.etherjar.rpc.ResponseJson
 import io.netty.buffer.ByteBufInputStream
 import org.reactivestreams.Publisher
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 import reactor.core.publisher.Sinks
@@ -51,7 +51,7 @@ class WebsocketHandler(
 ) : BaseHandler(writeRpcJson, nativeCall, requestMetrics) {
 
     companion object {
-        private val log = LoggerFactory.getLogger(WebsocketHandler::class.java)
+        private val log = noCoLogger(WebsocketHandler::class)
     }
 
     private val subscriptionId = AtomicLong(0)

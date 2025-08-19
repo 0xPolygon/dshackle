@@ -25,7 +25,7 @@ import io.emeraldpay.dshackle.data.TxId
 import io.emeraldpay.dshackle.upstream.MultistreamHolder
 import io.emeraldpay.dshackle.upstream.bitcoin.BitcoinMultistream
 import io.emeraldpay.dshackle.upstream.bitcoin.ExtractBlock
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Flux
@@ -42,7 +42,7 @@ class TrackBitcoinTx(
 ) : TrackTx {
 
     companion object {
-        private val log = LoggerFactory.getLogger(TrackBitcoinTx::class.java)
+        private val log = noCoLogger(TrackBitcoinTx::class)
     }
 
     override fun isSupported(chain: Chain): Boolean {

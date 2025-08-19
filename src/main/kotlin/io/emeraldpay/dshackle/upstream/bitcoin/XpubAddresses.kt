@@ -24,7 +24,7 @@ import org.bitcoinj.crypto.HDKeyDerivation
 import org.bitcoinj.params.MainNetParams
 import org.bitcoinj.params.TestNet3Params
 import org.bitcoinj.script.Script
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Flux
 import reactor.util.function.Tuples
 import java.util.concurrent.atomic.AtomicInteger
@@ -34,7 +34,7 @@ open class XpubAddresses(
 ) {
 
     companion object {
-        private val log = LoggerFactory.getLogger(XpubAddresses::class.java)
+        private val log = noCoLogger(XpubAddresses::class)
         private val MAINNET = MainNetParams()
         private val TESTNET = TestNet3Params()
         private val INACTIVE_LIMIT = 20

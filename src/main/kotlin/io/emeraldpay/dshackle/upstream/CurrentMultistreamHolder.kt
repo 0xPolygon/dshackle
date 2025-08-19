@@ -27,7 +27,7 @@ import io.emeraldpay.dshackle.upstream.calls.DefaultBitcoinMethods
 import io.emeraldpay.dshackle.upstream.calls.DefaultEthereumMethods
 import io.emeraldpay.dshackle.upstream.ethereum.EthereumMultistream
 import io.emeraldpay.dshackle.upstream.signature.ResponseSigner
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Repository
 import reactor.core.publisher.Flux
@@ -47,7 +47,7 @@ open class CurrentMultistreamHolder(
     @Autowired private val signer: ResponseSigner,
 ) : MultistreamHolder {
 
-    private val log = LoggerFactory.getLogger(CurrentMultistreamHolder::class.java)
+    private val log = noCoLogger(CurrentMultistreamHolder::class)
 
     private val chainMapping = ConcurrentHashMap<Chain, Multistream>()
     private val chainsBus = Sinks.many()

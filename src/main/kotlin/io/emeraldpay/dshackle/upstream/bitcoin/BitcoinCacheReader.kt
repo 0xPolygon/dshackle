@@ -11,7 +11,7 @@ import io.emeraldpay.dshackle.reader.TransformingReader
 import io.emeraldpay.dshackle.upstream.rpcclient.DshackleRequest
 import io.emeraldpay.dshackle.upstream.rpcclient.DshackleResponse
 import org.apache.commons.codec.binary.Hex
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Mono
 import reactor.util.function.Tuples
 
@@ -20,7 +20,7 @@ class BitcoinCacheReader(
 ) : DshackleRpcReader {
 
     companion object {
-        private val log = LoggerFactory.getLogger(BitcoinCacheReader::class.java)
+        private val log = noCoLogger(BitcoinCacheReader::class)
     }
 
     private val blockRaw = object : Reader<BlockId, ByteArray> {

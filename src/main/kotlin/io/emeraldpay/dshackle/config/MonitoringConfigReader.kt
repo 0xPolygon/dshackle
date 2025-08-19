@@ -15,14 +15,14 @@
  */
 package io.emeraldpay.dshackle.config
 
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.yaml.snakeyaml.nodes.MappingNode
 import java.io.InputStream
 
 class MonitoringConfigReader : YamlConfigReader(), ConfigReader<MonitoringConfig> {
 
     companion object {
-        private val log = LoggerFactory.getLogger(MonitoringConfigReader::class.java)
+        private val log = noCoLogger(MonitoringConfigReader::class)
     }
 
     fun read(input: InputStream): MonitoringConfig {

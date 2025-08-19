@@ -22,13 +22,13 @@ import com.fasterxml.jackson.core.JsonToken
 import io.emeraldpay.dshackle.Global
 import io.emeraldpay.etherjar.rpc.RpcResponseError
 import org.apache.commons.lang3.StringUtils
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import java.io.IOException
 
 abstract class ResponseParser<T> {
 
     companion object {
-        private val log = LoggerFactory.getLogger(ResponseParser::class.java)
+        private val log = noCoLogger(ResponseParser::class)
     }
 
     private val jsonFactory = JsonFactory()

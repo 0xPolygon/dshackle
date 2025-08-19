@@ -17,7 +17,7 @@ package io.emeraldpay.dshackle.monitoring
 
 import io.emeraldpay.dshackle.monitoring.accesslog.AccessContext
 import io.emeraldpay.dshackle.monitoring.requestlog.RequestContext
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 
 /**
  * Global access to monitoring functions
@@ -25,7 +25,7 @@ import org.slf4j.LoggerFactory
 class MonitoringContext {
 
     companion object {
-        private val log = LoggerFactory.getLogger(MonitoringContext::class.java)
+        private val log = noCoLogger(MonitoringContext::class)
     }
 
     /**

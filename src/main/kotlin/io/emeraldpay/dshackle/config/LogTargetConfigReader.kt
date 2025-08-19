@@ -15,7 +15,7 @@
  */
 package io.emeraldpay.dshackle.config
 
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.yaml.snakeyaml.nodes.MappingNode
 import java.util.Locale
 
@@ -24,7 +24,7 @@ class LogTargetConfigReader(
 ) : YamlConfigReader(), ConfigReader<LogTargetConfig.Any> {
 
     companion object {
-        private val log = LoggerFactory.getLogger(LogTargetConfigReader::class.java)
+        private val log = noCoLogger(LogTargetConfigReader::class)
     }
 
     override fun read(input: MappingNode?): LogTargetConfig.Any? {

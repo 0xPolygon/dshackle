@@ -21,7 +21,7 @@ import io.emeraldpay.etherjar.domain.Wei
 import io.emeraldpay.etherjar.rpc.json.BlockJson
 import io.emeraldpay.etherjar.rpc.json.TransactionJson
 import io.emeraldpay.etherjar.rpc.json.TransactionRefJson
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 import reactor.util.function.Tuples
@@ -34,7 +34,7 @@ abstract class EthereumFees(
 ) : AbstractChainFees<EthereumFees.EthereumFee, BlockJson<TransactionRefJson>, TransactionRefJson, TransactionJson>(heightLimit, upstreams, extractTx), ChainFees {
 
     companion object {
-        private val log = LoggerFactory.getLogger(EthereumFees::class.java)
+        private val log = noCoLogger(EthereumFees::class)
 
         private val extractTx = { block: BlockJson<TransactionRefJson> ->
             block.transactions

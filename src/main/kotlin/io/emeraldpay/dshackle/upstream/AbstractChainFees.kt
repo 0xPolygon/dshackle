@@ -2,7 +2,7 @@ package io.emeraldpay.dshackle.upstream
 
 import com.github.benmanes.caffeine.cache.Caffeine
 import io.emeraldpay.api.proto.BlockchainOuterClass
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 import java.time.Duration
@@ -16,7 +16,7 @@ abstract class AbstractChainFees<FEE, BLK, TXID, TRX>(
 ) : ChainFees {
 
     companion object {
-        private val log = LoggerFactory.getLogger(AbstractChainFees::class.java)
+        private val log = noCoLogger(AbstractChainFees::class)
     }
 
     private val txSource = EnumMap<ChainFees.Mode, TxAt<BLK, TXID>>(ChainFees.Mode::class.java)

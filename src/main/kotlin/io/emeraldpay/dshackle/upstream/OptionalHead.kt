@@ -1,7 +1,7 @@
 package io.emeraldpay.dshackle.upstream
 
 import io.emeraldpay.dshackle.data.BlockContainer
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.context.Lifecycle
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
@@ -24,7 +24,7 @@ class OptionalHead(
 ) : Head, Lifecycle {
 
     companion object {
-        private val log = LoggerFactory.getLogger(OptionalHead::class.java)
+        private val log = noCoLogger(OptionalHead::class)
     }
 
     private val enableLock = ReentrantLock()

@@ -28,7 +28,7 @@ import io.emeraldpay.dshackle.upstream.rpcclient.JsonRpcRequest
 import io.emeraldpay.dshackle.upstream.rpcclient.JsonRpcResponse
 import io.emeraldpay.etherjar.rpc.json.BlockJson
 import io.emeraldpay.etherjar.rpc.json.TransactionRefJson
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.context.Lifecycle
 import reactor.core.Disposable
 import reactor.core.publisher.Flux
@@ -44,7 +44,7 @@ class EthereumWsHead(
     private val wsSubscriptions: WsSubscriptions,
 ) : DefaultEthereumHead(blockchain), Lifecycle {
 
-    private val log = LoggerFactory.getLogger(EthereumWsHead::class.java)
+    private val log = noCoLogger(EthereumWsHead::class)
 
     private val running = AtomicBoolean(false)
     private var subscription: Disposable? = null

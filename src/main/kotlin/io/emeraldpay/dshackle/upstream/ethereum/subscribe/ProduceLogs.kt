@@ -25,7 +25,7 @@ import io.emeraldpay.dshackle.upstream.ethereum.EthereumMultistream
 import io.emeraldpay.dshackle.upstream.ethereum.subscribe.json.LogMessage
 import io.emeraldpay.etherjar.hex.HexData
 import io.emeraldpay.etherjar.rpc.json.TransactionReceiptJson
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 import reactor.kotlin.core.publisher.switchIfEmpty
@@ -37,7 +37,7 @@ class ProduceLogs(
 ) {
 
     companion object {
-        private val log = LoggerFactory.getLogger(ProduceLogs::class.java)
+        private val log = noCoLogger(ProduceLogs::class)
     }
 
     constructor(upstream: EthereumMultistream) : this(upstream.dataReaders.receiptReaderById)

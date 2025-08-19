@@ -7,7 +7,7 @@ import io.emeraldpay.dshackle.upstream.ethereum.subscribe.ConnectSyncing
 import io.emeraldpay.dshackle.upstream.ethereum.subscribe.PendingTxesSource
 import io.emeraldpay.etherjar.domain.Address
 import io.emeraldpay.etherjar.hex.Hex32
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Flux
 
 open class EthereumEgressSubscription(
@@ -16,7 +16,7 @@ open class EthereumEgressSubscription(
 ) : EgressSubscription {
 
     companion object {
-        private val log = LoggerFactory.getLogger(EthereumEgressSubscription::class.java)
+        private val log = noCoLogger(EthereumEgressSubscription::class)
 
         const val METHOD_NEW_HEADS = "newHeads"
         const val METHOD_LOGS = "logs"

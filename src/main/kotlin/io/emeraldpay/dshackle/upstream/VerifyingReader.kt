@@ -6,7 +6,7 @@ import io.emeraldpay.dshackle.upstream.rpcclient.DshackleRequest
 import io.emeraldpay.dshackle.upstream.rpcclient.DshackleResponse
 import io.emeraldpay.etherjar.rpc.RpcException
 import io.emeraldpay.etherjar.rpc.RpcResponseError
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Mono
 import java.util.concurrent.atomic.AtomicReference
 
@@ -15,7 +15,7 @@ class VerifyingReader(
 ) : DshackleRpcReader {
 
     companion object {
-        private val log = LoggerFactory.getLogger(VerifyingReader::class.java)
+        private val log = noCoLogger(VerifyingReader::class)
     }
 
     override fun read(key: DshackleRequest): Mono<DshackleResponse> {

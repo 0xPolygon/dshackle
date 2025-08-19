@@ -22,7 +22,7 @@ import io.emeraldpay.dshackle.data.TxId
 import io.emeraldpay.dshackle.upstream.Head
 import io.emeraldpay.dshackle.upstream.SubscriptionConnect
 import io.emeraldpay.dshackle.upstream.ethereum.EthereumMultistream
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Flux
 import reactor.core.scheduler.Schedulers
 import java.time.Duration
@@ -38,7 +38,7 @@ class ConnectBlockUpdates(
 ) : SubscriptionConnect<ConnectBlockUpdates.Update> {
 
     companion object {
-        private val log = LoggerFactory.getLogger(ConnectBlockUpdates::class.java)
+        private val log = noCoLogger(ConnectBlockUpdates::class)
         private const val HISTORY_LIMIT = 6 * 3
     }
 

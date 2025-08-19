@@ -1,12 +1,12 @@
 package io.emeraldpay.dshackle.config
 
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.yaml.snakeyaml.nodes.MappingNode
 
 class AccessLogConfigReader : YamlConfigReader(), ConfigReader<AccessLogConfig> {
 
     companion object {
-        private val log = LoggerFactory.getLogger(AccessLogConfigReader::class.java)
+        private val log = noCoLogger(AccessLogConfigReader::class)
     }
 
     override fun read(input: MappingNode?): AccessLogConfig {

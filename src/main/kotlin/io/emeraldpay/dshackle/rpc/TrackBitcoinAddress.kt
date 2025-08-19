@@ -31,7 +31,7 @@ import io.emeraldpay.dshackle.upstream.grpc.BitcoinGrpcUpstream
 import org.apache.commons.lang3.StringUtils
 import org.bitcoinj.params.MainNetParams
 import org.bitcoinj.params.TestNet3Params
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Flux
@@ -47,7 +47,7 @@ class TrackBitcoinAddress(
 ) : TrackAddress {
 
     companion object {
-        private val log = LoggerFactory.getLogger(TrackBitcoinAddress::class.java)
+        private val log = noCoLogger(TrackBitcoinAddress::class)
     }
 
     override fun isSupported(request: BlockchainOuterClass.BalanceRequest): Boolean {

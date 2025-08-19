@@ -22,13 +22,13 @@ import io.emeraldpay.dshackle.upstream.rpcclient.JsonRpcError
 import io.emeraldpay.dshackle.upstream.rpcclient.JsonRpcException
 import io.emeraldpay.dshackle.upstream.signature.ResponseSigner
 import io.emeraldpay.etherjar.rpc.RpcException
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 
 abstract class ValueAwareQuorum<T>(
     val clazz: Class<T>
 ) : CallQuorum {
 
-    private val log = LoggerFactory.getLogger(ValueAwareQuorum::class.java)
+    private val log = noCoLogger(ValueAwareQuorum::class)
     private var rpcError: JsonRpcError? = null
 
     fun extractValue(response: ByteArray, clazz: Class<T>): T? {

@@ -20,7 +20,7 @@ import io.emeraldpay.dshackle.Defaults
 import io.emeraldpay.dshackle.SilentException
 import io.emeraldpay.dshackle.upstream.rpcclient.JsonRpcException
 import io.emeraldpay.etherjar.rpc.RpcException
-import org.slf4j.LoggerFactory
+import io.klogging.noCoLogger
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 
@@ -33,7 +33,7 @@ class CompoundReader<K, D>(
 ) : Reader<K, D> {
 
     companion object {
-        private val log = LoggerFactory.getLogger(CompoundReader::class.java)
+        private val log = noCoLogger(CompoundReader::class)
     }
 
     override fun read(key: K): Mono<D> {
