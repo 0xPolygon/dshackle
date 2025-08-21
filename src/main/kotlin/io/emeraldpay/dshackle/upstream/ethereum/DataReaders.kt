@@ -131,13 +131,13 @@ open class DataReaders(
                 return source.read(request)
                     .timeout(Defaults.timeoutInternal, Mono.error(SilentException.Timeout("Balance not read $key")))
                     .flatMap(DshackleResponse::requireResult)
-                    .map {
+                    .handle { it, sink ->
                         val str = String(it)
                         // it's a json string, i.e. wrapped with quotes, ex. _"0x1234"_
                         if (str.startsWith("\"") && str.endsWith("\"")) {
-                            Wei.from(str.substring(1, str.length - 1))
+                            sink.next(Wei.fromHex(str.substring(1, str.length - 1)))
                         } else {
-                            throw RpcException(RpcResponseError.CODE_UPSTREAM_INVALID_RESPONSE, "Not Wei value")
+                            sink.error(RpcException(RpcResponseError.CODE_UPSTREAM_INVALID_RESPONSE, "Not Wei value"))
                         }
                     }
                     .retryWhen(Retry.backoff(3, Duration.ofSeconds(1)))

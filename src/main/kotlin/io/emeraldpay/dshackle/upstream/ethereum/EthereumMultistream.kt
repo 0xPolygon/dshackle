@@ -53,11 +53,11 @@ open class EthereumMultistream(
         private val log = noCoLogger(EthereumMultistream::class)
     }
 
-    private var head = AtomicReference<Head>(EmptyHead())
+    private var currentHead = AtomicReference<Head>(EmptyHead())
 
     private val ingressReader = CompoundReader(CacheReader(caches), MultistreamReader(this, signer))
-    val dataReaders = DataReaders(ingressReader, head)
-    private val normalizedReader = NormalizingReader(head, caches, EthereumFullBlocksReader(dataReaders))
+    val dataReaders = DataReaders(ingressReader, currentHead)
+    private val normalizedReader = NormalizingReader(currentHead, caches, EthereumFullBlocksReader(dataReaders))
     private val ingressFinalReader = CompoundReader(normalizedReader, ingressReader)
 
     private val reader = IntegralRpcReader(
@@ -89,8 +89,8 @@ open class EthereumMultistream(
     }
 
     override fun init() {
-        if (upstreams.isNotEmpty()) {
-            head.set(updateHead())
+        if (upstreams.size > 0) {
+            currentHead.set(updateHead())
         }
         super.init()
     }
@@ -114,11 +114,11 @@ open class EthereumMultistream(
     }
 
     override fun getHead(): Head {
-        return head.get()
+        return currentHead.get()
     }
 
     override fun setHead(head: Head) {
-        this.head.set(head)
+        this.currentHead.set(head)
         onHeadUpdated(head)
     }
 
