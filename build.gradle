@@ -6,6 +6,7 @@ import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
 
 plugins {
+    id "dshackle.conventions"
     id 'java'
     id 'groovy'
     id 'idea'
@@ -13,7 +14,7 @@ plugins {
     id 'jacoco'
 
     id("org.jetbrains.kotlin.jvm") version "$kotlinVersion"
-    id("com.google.cloud.tools.jib") version "3.3.1"
+    id("com.google.cloud.tools.jib") version "3.4.5"
     id("org.springframework.boot") version "$springBootVersion"
     id("com.google.protobuf") version "0.8.17"
     id("org.jlleitschuh.gradle.ktlint") version "10.2.0"
@@ -22,11 +23,7 @@ plugins {
 }
 
 group = 'io.emeraldpay.dshackle'
-
-// Version schema:
-//    x.x.x for production, following SemVer model
-//    x.x.x-SNAPSHOT for development
-version = '0.16.0-SNAPSHOT'
+version = "development"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_17
@@ -185,30 +182,20 @@ application {
 
 jib {
     from {
-        image = 'azul/zulu-openjdk-debian:17'
+        image = "ghcr.io/graalvm/graalvm-community:17"
     }
+
     to {
-        // by default publish as:
-        //  dshackle:shapshot,
-        //  dshackle:t<yyyyMMddHHmm>,
-        //  dshackle:<versionFull> and
-        //  dshackle:<versionMajor.versionMinor>
-        //  dshackle:latest only when publishing first version with zero patch (ex. 1.2.0)
-        image = [
-                project.hasProperty('docker') ? project.property('docker') : 'emeraldpay',
-                '/dshackle:',
-                'snapshot'
-        ].join('')
-        tags = [project.version].with(true) {
-            add "t" + DateTimeFormatter.ofPattern("yyyyMMddHHmm").withZone(ZoneId.of('UTC')).format(Instant.now())
-            add project.version.toString().replaceAll('(\\d+\\.\\d+).+', '$1')
-        }
+        image = System.getenv("DSHACKLE_IMAGE_REPOSITORY")
+        tags = ["${-> project.ext.git["git.commit.id"]}"]
     }
     container {
-        jvmFlags = ['-Xms1024m']
         mainClass = 'io.emeraldpay.dshackle.StarterKt'
-        args = []
-        ports = ['2448', '2449', '8545']
+
+        args = [
+            "-XX:+UseG1GC",
+            "-XX:MaxRAMPercentage=75"
+        ]
     }
 }
 
